@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Drucker Page</title> 
+</h:head>
+<h:body>
+   <h:form id="testForm">
+       
+        <p:growl id="infoMsg" showDetail="true"/> 
+        
+        <h1>Druckerverwaltung</h1>
+        <br/><br/>
+        <a href="rechner.xhtml" >Rechnerverwaltung</a>
+        <a href="raum.xhtml" >Raumverwaltung</a>
+        <br/><br/>
+        
+        <p:panelGrid columns="2" styleClass="ui-panelgrid-blank ui-fluid" > 
+            
+            <p:outputLabel for="ipID" value="ID"/>
+            <p:inputText id="ipID" value="#{druckerBean.object.id}" disabled="true"/>
+            
+            <p:outputLabel for="ipSerial" value="Seriennummer"/>
+            <p:inputText id="ipSerial" value="#{druckerBean.object.serienNummer}"/>
+            
+            <p:outputLabel for="ipModel" value="Modell"/>
+            <p:inputText id="ipModel" value="#{druckerBean.object.modell}"/>
+            
+            <p:outputLabel for="ipManufacturer" value="Hersteller"/>
+            <p:inputText id="ipManufacturer" value="#{druckerBean.object.hersteller}"/>
+            
+            <p:outputLabel for="ipStatus" value="Status"/>
+            <p:selectOneMenu id="ipStatus" value="#{druckerBean.object.status}">
+               <f:selectItem itemValue = "OK" itemLabel = "OK" /> 
+               <f:selectItem itemValue = "in Reparatur" itemLabel = "in Reparatur" />
+               <f:selectItem itemValue = "defekt" itemLabel = "defekt" />
+            </p:selectOneMenu>    
+            
+            <p:outputLabel for="ipGuarantee" value="Herstellergarantie Monate"/>
+            <p:inputNumber id="ipGuarantee" value="#{druckerBean.object.herstellergarantie}" decimalPlaces="0" minValue="1" maxValue="12"/>
+            
+            <p:outputLabel for="ipDeliveryDate" value="Lieferdatum"/>
+            <p:datePicker id="ipDeliveryDate" value="#{druckerBean.object.lieferDatum}"/>
+            
+            <p:outputLabel for="ipColor" value="Farbfunktion"/>
+            <p:selectBooleanCheckbox id="ipColor" value="#{druckerBean.object.farbdruckfunktion}"/>
+            
+            <p:outputLabel for="ipTechnology" value="Technologie"/>
+            <p:selectOneMenu id="ipTechnology" value="#{druckerBean.object.technologie}">
+               <f:selectItem itemValue = "Farbtintenstrahldrucker" itemLabel = "Farbtintenstrahldrucker" /> 
+               <f:selectItem itemValue = "Tintenstrahldrucker" itemLabel = "Tintenstrahldrucker" />
+               <f:selectItem itemValue = "Farblaserdrucker" itemLabel = "Farblaserdrucker" /> 
+               <f:selectItem itemValue = "Laserdrucker" itemLabel = "Laserdrucker" />
+            </p:selectOneMenu>
+            
+            <p:outputLabel for="ipFormat" value="Max. Papierformat"/>
+            <p:selectOneMenu id="ipFormat" value="#{druckerBean.object.papierformatmax}">
+               <f:selectItem itemValue = "A3" itemLabel = "A3" /> 
+               <f:selectItem itemValue = "A4" itemLabel = "A4" />
+            </p:selectOneMenu>
+            
+            <p:outputLabel for="ipPagesPrinted" value="Insgesamt gedruckt (Seitenanzahl)"/>
+            <p:inputText id="ipPagesPrinted" value="#{druckerBean.object.druckseitengesamt}" disabled="true"/>
+            
+            <p:outputLabel for="ipCapacityRemaining" value="Restkapazität Betriebsmittel (Seitenanzahl)"/>
+            <p:inputText id="ipCapacityRemaining" value="#{druckerBean.object.restkapazitaet}" disabled="true"/>
+            
+            <p:outputLabel for="ipCapacity" value="Kapazität Betriebsmittel (Seitenanzahl)"/>
+            <p:inputText id="ipCapacity" value="#{druckerBean.object.kapazitaetbetriebsmittel}" disabled="true"/>
+            
+            
+            <p:outputLabel for="ipRoomSelect" value="Raum"/>
+            <p:outputPanel id="ipRoomPanel" style="display:block">
+                <p:inputText value="#{druckerBean.object.raum.bezeichnung}" style="width: 150px;" disabled="true"
+                             rendered="#{druckerBean.object.hasRaum()}" />
+                &nbsp;&nbsp;
+                <p:commandButton id="ipRoomSelect" onclick="PF('dlgRoom').show();" icon="fa fa-plus"
+                                 rendered="#{not druckerBean.object.hasRaum()}"/>
+                <p:commandButton id="ipRoomDelete" action="#{druckerBean.object.raum.removeHardware(druckerBean.drucker)}"
+                                 icon="fa fa-trash" style="font-size: 15px; height: 30px; width: 30px;"
+                                 update=":testForm" rendered="#{druckerBean.object.hasRaum()}"/>
+            </p:outputPanel>
+            
+            
+ 
+            
+        </p:panelGrid>
+        
+        <br/>
+        
+        <p:commandButton value="Speichern" action="#{druckerBean.addObjectToList()}" update=":testForm" style="text-shadow: none; box-shadow: none; background: #00ccff; color: white; align-content: center; padding: 6px; width: 180px;" />
+        &nbsp;
+        <p:commandButton value="Reset" action="#{druckerBean.resetObject()}" update=":testForm" style="text-shadow: none; box-shadow: none; background: #00ccff; color: white; align-content: center; padding: 6px; width: 180px;" />
+        <br/><br/><br/><br/> 
+
+        <p:dataTable value="#{druckerBean.objectList}" var="drucker" style="width: 700px; border-collapse: none;"> 
+            <p:column headerText="ID" style="box-shadow: none;">
+                <h:outputText value="#{drucker.id}" />
+            </p:column>
+            <p:column headerText="Hersteller" style="box-shadow: none;">
+                <h:outputText value="#{drucker.hersteller}" />
+            </p:column>
+            <p:column headerText="Modell" style="box-shadow: none;">
+                <h:outputText value="#{drucker.modell}" />
+            </p:column>
+            <p:column headerText="Raum" style="box-shadow: none;">
+                <h:outputText value="#{drucker.raum.bezeichnung}" />
+            </p:column>
+            <p:column headerText="Optionen" style="box-shadow: none;">
+                <p:commandLink value="bearbeiten" action="#{druckerBean.setObject(object)}" update=":testForm"/>
+                &nbsp;&nbsp;&nbsp;
+                <p:commandLink value="l&ouml;schen" action="#{druckerBean.deleteObjectFromList(tObj)}" update=":testForm"/>
+            </p:column>        
+        </p:dataTable>
+
+    </h:form>        
+    
+    <p:dialog header="Raum zuordnen" widgetVar="dlgRoom" modal="true" position="center,top" style="margin-top: 40px;">
+        <div style="width: 600px; margin: 0px 10px 10px 10px;">
+
+            <h:form id="dlgRoomForm">
+                <p:scrollPanel mode="native" style="width: 100%; height: 300px; margin-top: 7px;">
+                    <p:dataTable id="roomsTable" var="raum" value="#{raumBean.objectList}" style="width: 100%;">
+                        <p:column headerText="Raumbezeichnung">
+                            <h:outputText value="#{raum.bezeichnung}" />
+                        </p:column> 
+                        <p:column headerText="Raumtyp">
+                            <h:outputText value="#{raum.typ}" />
+                        </p:column>
+                        <p:column headerText="Optionen" style="width: 110px; text-align: center;">
+                            <p:commandLink  action="#{raum.addHardware(druckerBean.object)}" onclick = "PF('dlgRoom').hide();" update=":testForm">
+                                <i class="fa fa-plus" />
+                            </p:commandLink>
+                        </p:column>
+
+                    </p:dataTable>
+                </p:scrollPanel>
+
+                <br/>
+                <p:commandButton title="Close" style="width: 120px;" onclick="PF('dlgRoom').hide();" update=":testForm" immediate="true"/>
+
+            </h:form>
+
+        </div>
+    </p:dialog>
+        
+</h:body>
+</html>
