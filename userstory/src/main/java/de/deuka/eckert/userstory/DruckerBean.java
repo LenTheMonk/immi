@@ -16,7 +16,7 @@ import javax.inject.Named;
  */
 @Named(value = "druckerBean")
 @SessionScoped
-public class DruckerBean extends GenericBean<Drucker>{
+public class DruckerBean extends GenericBeanOld<Drucker>{
 
     public DruckerBean() {
         this.getObjectList().add(new Drucker("Farbtintenstrahldrucker", true, "A3",

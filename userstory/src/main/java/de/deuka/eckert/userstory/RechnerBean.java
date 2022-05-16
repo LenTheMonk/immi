@@ -16,7 +16,7 @@ import javax.inject.Named;
  */
 @Named(value="rechnerBean")
 @SessionScoped
-public class RechnerBean extends GenericBean<Rechner>{
+public class RechnerBean extends GenericBeanOld<Rechner>{
 
     public RechnerBean() {
         this.getObjectList().add(new Rechner("HP229", "HP Series 4", "HP", "OK",

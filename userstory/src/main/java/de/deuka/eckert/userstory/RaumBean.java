@@ -14,7 +14,7 @@ import javax.inject.Named;
  */
 @Named(value = "raumBean")
 @SessionScoped
-public class RaumBean extends GenericBean<Raum>{
+public class RaumBean extends GenericBeanOld<Raum>{
 
     public RaumBean() {
         this.getObjectList().add(new Raum("Großer Raum", "Raum"));
