@@ -5,6 +5,7 @@
  */
 package de.jahresprojekt.datenbank;
 
+import java.io.File;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
@@ -27,16 +28,20 @@ public class HibernateUtils {
     }
     
     private static SessionFactory createSingletonInstance() {
+        File cfgFile = new File("src/hibernate.cfg.xml");
+        System.out.println(cfgFile.getAbsolutePath());
         return new Configuration()
-                .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect")
-                .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver")
-                .setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" 
-                        + HibernateUtils.DB_NAME + "?zeroDateTimeBehavior=convertToNull")
-                .setProperty("hibernate.connection.username", "root")
-                .setProperty("hibernate.hbm2ddl.auto", "update")
-                .setProperty("show_sql", "true")
-                .setProperty("format_sql", "true")
-                .setProperty("use_sql_comments", "true")
+                .configure(cfgFile)
+//                .addResource("src/de/jahresprojekt/persistence/OrtPojo.hbm.xml")
+//                .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect")
+//                .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver")
+//                .setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" 
+//                        + HibernateUtils.DB_NAME + "?zeroDateTimeBehavior=convertToNull")
+//                .setProperty("hibernate.connection.username", "root")
+//                .setProperty("hibernate.hbm2ddl.auto", "update")
+//                .setProperty("show_sql", "true")
+//                .setProperty("format_sql", "true")
+//                .setProperty("use_sql_comments", "true")
                 .buildSessionFactory();
     }
     
