@@ -56,7 +56,7 @@
 
     <!-- Welcome -->       
     <welcome-file-list>
-        <welcome-file>drucker.xhtml</welcome-file>
+        <welcome-file>ort.xhtml</welcome-file>
     </welcome-file-list>
       
 
