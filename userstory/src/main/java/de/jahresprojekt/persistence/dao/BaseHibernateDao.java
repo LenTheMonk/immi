@@ -11,7 +11,12 @@ import org.hibernate.Transaction;
 import de.jahresprojekt.persistence.entities.base.IPojo;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import org.hibernate.Criteria;
 
 
 /**
@@ -66,6 +71,16 @@ public abstract class BaseHibernateDao<T extends IPojo>
     public List<T> getAll() {
         List<T> pojos = new ArrayList<>();
         
+        
+        EntityManager manager = HibernateUtils.getOpenSession()
+            .getEntityManagerFactory().createEntityManager();
+        
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        
+        CriteriaQuery<T> query = builder.createQuery(getPojoClass());
+        
+        //query.
+        // HibernateUtils.getOpenSession().
         // TODO @Lukas Eckert
         
         return pojos;
