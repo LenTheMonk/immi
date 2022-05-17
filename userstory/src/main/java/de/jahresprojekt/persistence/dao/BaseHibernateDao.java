@@ -79,6 +79,8 @@ public abstract class BaseHibernateDao<T extends IPojo>
         
         CriteriaQuery<T> query = builder.createQuery(getPojoClass());
         
+        query.from(getPojoClass());
+        
         //query.
         // HibernateUtils.getOpenSession().
         // TODO @Lukas Eckert

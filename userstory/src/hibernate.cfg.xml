@@ -31,7 +31,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
       
         <!-- List of XML mapping files -->
-        <mapping class="de.jahresprojekt.persistence.OrtPojo"/>
+        <mapping class="de.jahresprojekt.persistence.entities.Ort"/>
         <!--<mapping resource = "main/java/de/jahresprojekt/persistence/OrtPojo.hbm.xml"/>-->
       
     </session-factory>
