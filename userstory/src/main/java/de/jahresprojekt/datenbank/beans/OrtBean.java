@@ -13,7 +13,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 @Named(value = "city") 
 @SessionScoped

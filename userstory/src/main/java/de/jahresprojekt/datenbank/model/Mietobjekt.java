@@ -9,7 +9,7 @@ package de.jahresprojekt.datenbank.model;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public class Mietobjekt extends Datenbankobjekt{
     private int objektnummer;

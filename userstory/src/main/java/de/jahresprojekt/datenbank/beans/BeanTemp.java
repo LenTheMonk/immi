@@ -14,7 +14,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public abstract class BeanTemp<T extends ModelTemp, D extends DaoTemp>
         implements Serializable {

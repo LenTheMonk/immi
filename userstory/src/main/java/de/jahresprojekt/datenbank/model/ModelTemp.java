@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public abstract class ModelTemp implements Serializable {
   //-------------------------------------------------------------------------

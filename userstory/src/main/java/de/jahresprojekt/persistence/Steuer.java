@@ -6,20 +6,23 @@
 package de.jahresprojekt.persistence;
 
 import de.jahresprojekt.datenbank.HibernateUtils;
+import java.util.concurrent.Callable;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public class Steuer {
     
     
     public static void main(String[] args) {
         Steuer steuer = new Steuer();
-        steuer.addOrt(212, "Kackhausen");
+        // steuer.addOrt(12345, "Testort");
+        
+        OrtPojo ort = steuer.getOrtByID(3);
     }
     
     public OrtPojo addOrt(int plz, String name) {
@@ -44,5 +47,30 @@ public class Steuer {
         }
         
         return null;
+    }
+    
+    public OrtPojo getOrtByID(long iD) {
+        Session session = HibernateUtils.getNewSession();
+        Transaction tx = null;
+        
+        OrtPojo loaded = null;
+        
+        try {
+            tx = session.beginTransaction();
+            
+            loaded = session.get(OrtPojo.class, iD);
+
+            System.out.println("geladener ort " + loaded.getName() + " " + loaded.getPlz());
+            tx.commit();
+        } catch (Exception e) {
+            if(tx!=null) {
+                tx.rollback();
+                e.printStackTrace();
+            }
+        } finally {
+            session.close();
+        }
+        
+        return loaded;
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public class DaoTemp<T extends ModelTemp> implements IDaoFunctions<T>
 {

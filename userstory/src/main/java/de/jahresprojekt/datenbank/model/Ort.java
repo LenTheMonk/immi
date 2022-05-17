@@ -9,7 +9,7 @@ package de.jahresprojekt.datenbank.model;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public class Ort extends ModelTemp {
     private int postleitzahl;

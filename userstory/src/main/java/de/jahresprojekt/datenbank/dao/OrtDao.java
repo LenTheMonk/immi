@@ -9,7 +9,7 @@ import de.jahresprojekt.datenbank.model.Ort;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public class OrtDao extends DaoTemp<Ort>{
     

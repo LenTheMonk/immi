@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public class AdresseBean extends BeanTemp<Adresse, AdresseDao>{
 

@@ -9,7 +9,7 @@ package de.jahresprojekt.datenbank.model;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public class Adresse extends ModelTemp {
     private String strasse;

@@ -2,35 +2,37 @@
 <!DOCTYPE hibernate-configuration SYSTEM 
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-   <session-factory>
+    <session-factory>
    
-      <property name = "hibernate.dialect">
-         org.hibernate.dialect.MySQLDialect
-      </property>
+        <property name = "hibernate.dialect">
+            org.hibernate.dialect.MariaDBDialect
+        </property>
       
-      <property name = "hibernate.connection.driver_class">
-         com.mysql.jdbc.Driver
-      </property>
+        <property name = "hibernate.connection.driver_class">
+            com.mysql.jdbc.Driver
+        </property>
       
-      <!-- Assume test is the database name -->
+        <!-- Assume test is the database name -->
       
-      <property name = "hibernate.connection.url">
-         jdbc:mysql://localhost/jahresprojekt
-      </property>
+        <property name = "hibernate.connection.url">
+            jdbc:mysql://localhost/jahresprojekt
+        </property>
       
-      <property name = "hibernate.connection.username">
-         root
-      </property>
+        <property name = "hibernate.connection.username">
+            root
+        </property>
       
-      <property name = "hibernate.connection.password"></property>
+        <property name = "hibernate.connection.password"></property>
+        
+        <property name="hibernate.show_sql">true</property>
       
-      <property name="hibernate.id.new_generator_mappings">false</property>
+        <property name="hibernate.id.new_generator_mappings">false</property>
       
-      <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
       
-      <!-- List of XML mapping files -->
-      <mapping class="de.jahresprojekt.persistence.OrtPojo"/>
-      <!--<mapping resource = "main/java/de/jahresprojekt/persistence/OrtPojo.hbm.xml"/>-->
+        <!-- List of XML mapping files -->
+        <mapping class="de.jahresprojekt.persistence.OrtPojo"/>
+        <!--<mapping resource = "main/java/de/jahresprojekt/persistence/OrtPojo.hbm.xml"/>-->
       
-   </session-factory>
+    </session-factory>
 </hibernate-configuration>

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 public interface IDaoFunctions<T> {
   //-------------------------------------------------------------------------

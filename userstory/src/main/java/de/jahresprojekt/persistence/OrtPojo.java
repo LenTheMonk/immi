@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author lukas
+* @author Lukas Eckert
  */
 @Entity
 @Table(name = "ORT")
@@ -23,6 +23,10 @@ public class OrtPojo implements Serializable {
     String name;
     int plz;
 
+    // Default Constructor for PoJo
+    public OrtPojo() {
+    }
+    
     public OrtPojo(String name, int plz) {
         this.name = name;
         this.plz = plz;

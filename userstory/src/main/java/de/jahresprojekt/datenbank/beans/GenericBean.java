@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Lukas
+ * @author Lukas Eckert
  * @param <T> Klasse die verwaltet wird
  */
 public abstract class GenericBean<T> implements Serializable {

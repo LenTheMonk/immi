@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.jahresprojekt.datenbank.dao;
+package de.jahresprojekt.persistence;
 
-import de.jahresprojekt.datenbank.model.Adresse;
+import java.io.Serializable;
 
 /**
- *
-* @author Lukas Eckert
+ * 
+ * @author Lukas Eckert
  */
-public class AdresseDao extends DaoTemp<Adresse>{
+public class BasePojo implements Serializable{
     
 }

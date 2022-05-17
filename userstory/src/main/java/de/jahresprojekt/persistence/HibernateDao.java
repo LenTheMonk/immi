@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.jahresprojekt.datenbank.dao;
-
-import de.jahresprojekt.datenbank.model.Adresse;
+package de.jahresprojekt.persistence;
 
 /**
  *
 * @author Lukas Eckert
  */
-public class AdresseDao extends DaoTemp<Adresse>{
+public abstract class HibernateDao<POJO> {
     
 }
