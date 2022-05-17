@@ -6,8 +6,7 @@
 package de.jahresprojekt.persistence;
 
 import de.jahresprojekt.datenbank.HibernateUtils;
-import java.util.concurrent.Callable;
-import org.hibernate.SessionFactory;
+import de.jahresprojekt.persistence.dao.OrtDao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -19,10 +18,16 @@ public class Steuer {
     
     
     public static void main(String[] args) {
-        Steuer steuer = new Steuer();
-        // steuer.addOrt(12345, "Testort");
+        OrtDao dao = new OrtDao();
+        OrtPojo ort = new OrtPojo("Krefeld", 47800);
+        dao.save(ort);
+        OrtPojo ort2 = new OrtPojo("Düsseldorf", 43351);
+        dao.save(ort2);
+        ort.setName("Crefeld");
+        dao.save(ort);
+        OrtPojo ort3 = new OrtPojo("Crefeld", 47800);
+        dao.save(ort3);
         
-        OrtPojo ort = steuer.getOrtByID(3);
     }
     
     public OrtPojo addOrt(int plz, String name) {

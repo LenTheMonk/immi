@@ -18,6 +18,7 @@ public class HibernateUtils {
     
     private static final SessionFactory factorySingleton = HibernateUtils.createSingletonInstance();
     private static final String DB_NAME = "jahresprojekt";
+    private static Session openSession = null;
     
     public static SessionFactory getFactorySingleton() {
         return HibernateUtils.factorySingleton;
@@ -25,6 +26,17 @@ public class HibernateUtils {
     
     public static Session getNewSession() {
         return HibernateUtils.factorySingleton.openSession();
+    }
+    
+    /**
+     * Liefert eine offene unique Session.
+     * @return Session
+     */
+    public static Session getOpenSession() {
+        if (openSession == null || !openSession.isOpen()) {
+            openSession = HibernateUtils.getNewSession();
+        }
+        return openSession;
     }
     
     private static SessionFactory createSingletonInstance() {

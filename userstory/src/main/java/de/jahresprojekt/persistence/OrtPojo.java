@@ -5,24 +5,30 @@
  */
 package de.jahresprojekt.persistence;
 
-import java.io.Serializable;
+import de.jahresprojekt.persistence.pojo.BasePojo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
 * @author Lukas Eckert
  */
 @Entity
-@Table(name = "ORT")
-public class OrtPojo implements Serializable {
+@Table(name = OrtPojo.TABLE_NAME, uniqueConstraints =
+        { @UniqueConstraint(columnNames = { "name", "plz" }) })
+public class OrtPojo extends BasePojo {
+    
+    public static final String TABLE_NAME = "ORT";
+    
     @Id @GeneratedValue
     long id;
+    
     String name;
     int plz;
-
+    
     // Default Constructor for PoJo
     public OrtPojo() {
     }
@@ -31,19 +37,23 @@ public class OrtPojo implements Serializable {
         this.name = name;
         this.plz = plz;
     }
+
+    @Override
+    public String getTableName() {
+        return OrtPojo.TABLE_NAME;
+    }
     
     // id
 
+    @Override
     public long getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    @Override
+    public void setID(long iD) {
+        this.id = iD;
     }
-    
-    
-    
     
     // Get
 
