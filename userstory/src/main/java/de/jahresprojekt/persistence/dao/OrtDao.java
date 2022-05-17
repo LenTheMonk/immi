@@ -5,7 +5,6 @@
  */
 package de.jahresprojekt.persistence.dao;
 
-import de.jahresprojekt.persistence.dao.BaseHibernateDao;
 import de.jahresprojekt.persistence.entities.Ort;
 
 /**

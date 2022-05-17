@@ -6,7 +6,6 @@
 package de.jahresprojekt.persistence.entities.base;
 
 import java.io.Serializable;
-import org.hibernate.Transaction;
 
 /**
  * 

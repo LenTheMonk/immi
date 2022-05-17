@@ -5,6 +5,9 @@
  */
 package de.jahresprojekt.persistence.dao.base;
 
+import javax.persistence.PersistenceException;
+import org.hibernate.Transaction;
+
 /**
  *
  * @author Lukas Eckert
@@ -14,15 +17,17 @@ public interface IHibernateDao<IBasePOJO>{
     
     /**
      * Lädt ein Pojo anhand seiner ID.
-     * @param iD iD
-     * @return POJO
+     * @param iD ID zu der geladen werden soll
+     * @return POJO das geladen wurde
      */
     IBasePOJO getByID(long iD);
     
     /**
-     * Speichert/Updated ein Pojo in der DB
+     * Speichert/Updated ein Pojo in der DB.
+     * Die Transaktion muss mitgeliefert werden.
      * @param pojo Pojo
-     * @return id des gespeicherten Pojo
+     * @param tx Transaktion
+     * @return ID des gespeicherten Pojo
      */
-    long save(IBasePOJO pojo);
+    Long save(IBasePOJO pojo, Transaction tx) throws PersistenceException;
 }

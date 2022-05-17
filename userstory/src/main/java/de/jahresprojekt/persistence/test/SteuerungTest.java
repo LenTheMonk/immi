@@ -15,19 +15,20 @@ import org.hibernate.Transaction;
  *
 * @author Lukas Eckert
  */
-public class Steuer {
+public class SteuerungTest {
     
     
     public static void main(String[] args) {
+        Transaction tx = HibernateUtils.getOpenSession().beginTransaction();
         OrtDao dao = new OrtDao();
         Ort ort = new Ort("Krefeld", 47800);
-        dao.save(ort);
+        dao.save(ort, tx);
         Ort ort2 = new Ort("Düsseldorf", 43351);
-        dao.save(ort2);
+        dao.save(ort2, tx);
         ort.setName("Crefeld");
-        dao.save(ort);
+        dao.save(ort, tx);
         Ort ort3 = new Ort("Crefeld", 47800);
-        dao.save(ort3);
+        dao.save(ort3, tx);
         
     }
     

@@ -7,11 +7,10 @@ package de.jahresprojekt.persistence.dao;
 
 import de.jahresprojekt.persistence.dao.base.IHibernateDao;
 import de.jahresprojekt.persistence.utils.HibernateUtils;
-import java.sql.SQLIntegrityConstraintViolationException;
-import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.exception.ConstraintViolationException;
 import de.jahresprojekt.persistence.entities.base.IPojo;
+import javax.persistence.PersistenceException;
+
 
 /**
  *
@@ -23,24 +22,21 @@ public abstract class BaseHibernateDao<T extends IPojo> implements IHibernateDao
     public static final long NO_ID = -210L;
     
     @Override
-    public long save(T pojo) {
-        Session currentSession = HibernateUtils.getOpenSession();
-        Transaction tx = null;
+    public Long save(T pojo, Transaction tx) {
         Long id = null;
         try {
-            tx = currentSession.beginTransaction();
-            id = (long) currentSession.save(pojo);
-            System.out.println(pojo.getTableName());
-            System.out.println(id);
+            id = (long) HibernateUtils.getOpenSession().save(pojo);
             tx.commit();
-            return id;
         } catch (Exception e) {
             if (tx!=null) {
+                // Rollback im Fehlerfall
                 tx.rollback();
                 e.printStackTrace();
-            }
-            if (e.getClass() == ConstraintViolationException.class){
-                return NO_ID;
+                // PersistenceException weiter werfen,
+                // damit der Service das mitbekommt
+                if (e instanceof PersistenceException) {
+                    throw e;
+                }
             }
         }
         return id;
@@ -54,19 +50,12 @@ public abstract class BaseHibernateDao<T extends IPojo> implements IHibernateDao
 
     @Override
     public T getByID(long iD) {
-        Session currentSession = HibernateUtils.getOpenSession();
-        Transaction tx = null;
         T pojo = null;
         
         try {
-            tx = currentSession.beginTransaction();
-            pojo = (T) currentSession.get(this.getPojoClass(), iD);
-            tx.commit();
+            pojo = (T) HibernateUtils.getOpenSession().get(this.getPojoClass(), iD);
         } catch (Exception e) {
-            if (tx!=null) {
-                tx.rollback();
-                e.printStackTrace();
-            }
+            e.printStackTrace();
         }
         return pojo;
     }
