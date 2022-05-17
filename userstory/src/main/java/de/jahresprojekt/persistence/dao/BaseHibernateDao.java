@@ -13,16 +13,16 @@ import javax.persistence.PersistenceException;
 
 
 /**
- *
+ * Abstrakte Implementierung der IHibernateDao.
  * @author Lukas Eckert
  * @param <T> Pojo das von der Dao verwaltet wird
  */
-public abstract class BaseHibernateDao<T extends IPojo> implements IHibernateDao<T>{
-
-    public static final long NO_ID = -210L;
+public abstract class BaseHibernateDao<T extends IPojo>
+    implements IHibernateDao<T> {
     
     @Override
     public Long save(T pojo, Transaction tx) {
+        // Wenn wir nicht speichern können, wird so null zurückgegeben.
         Long id = null;
         try {
             id = (long) HibernateUtils.getOpenSession().save(pojo);

@@ -56,6 +56,7 @@ public class HibernateUtils {
                 .buildSessionFactory();
     }
     
+    // Alter Kram aus einer Übungsaufgabe. Erstmal so lassen.
     @Deprecated
     private static SessionFactory createLegacySingletonInstance() {
                 return new Configuration()

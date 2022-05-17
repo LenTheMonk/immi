@@ -6,16 +6,9 @@
 package de.jahresprojekt.persistence.entities.base;
 
 /**
- *
+ * Abstraktes IPojo. Aktuell passiert hier noch nichts.
  * @author Lukas Eckert
  */
 public abstract class BasePojo implements IPojo{
-
-    /**
-     * Default Constructor für POJOs.
-     */
-    public BasePojo() {
-    
-    }
     
 }

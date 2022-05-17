@@ -9,7 +9,7 @@ import javax.persistence.PersistenceException;
 import org.hibernate.Transaction;
 
 /**
- *
+ * Interface für die DAOs.
  * @author Lukas Eckert
  * @param <IBasePOJO> POJO das verwaltet wird
  */

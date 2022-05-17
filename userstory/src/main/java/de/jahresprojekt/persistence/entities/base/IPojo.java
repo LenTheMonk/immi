@@ -8,7 +8,7 @@ package de.jahresprojekt.persistence.entities.base;
 import java.io.Serializable;
 
 /**
- * 
+ * Interface für Pojos.
  * @author Lukas Eckert
  */
 public interface IPojo extends Serializable {
