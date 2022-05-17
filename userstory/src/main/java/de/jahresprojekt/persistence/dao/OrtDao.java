@@ -5,17 +5,18 @@
  */
 package de.jahresprojekt.persistence.dao;
 
-import de.jahresprojekt.persistence.OrtPojo;
+import de.jahresprojekt.persistence.dao.BaseHibernateDao;
+import de.jahresprojekt.persistence.entities.Ort;
 
 /**
  *
  * @author Lukas Eckert
  */
-public class OrtDao extends HibernateDao<OrtPojo> {
+public class OrtDao extends BaseHibernateDao<Ort> {
 
     @Override
     Class getPojoClass() {
-        return OrtPojo.class;
+        return Ort.class;
     }
     
 }
