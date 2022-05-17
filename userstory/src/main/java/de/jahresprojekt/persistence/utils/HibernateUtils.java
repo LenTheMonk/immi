@@ -24,12 +24,17 @@ public class HibernateUtils {
         return HibernateUtils.factorySingleton;
     }
     
-    public static Session getNewSession() {
+    /**
+     * Liefert stets eine neue Session.
+     * @return Neue Session
+     */
+    private static Session getNewSession() {
         return HibernateUtils.factorySingleton.openSession();
     }
     
     /**
-     * Liefert eine offene unique Session.
+     * Liefert die offene Session. Falls keine Session existiert, wird sie neu
+     * angelegt.
      * @return Session
      */
     public static Session getOpenSession() {
@@ -39,21 +44,30 @@ public class HibernateUtils {
         return openSession;
     }
     
+    /**
+     * Liefert eine neue SessionFactory, die mit der hibernate.cfg.xml
+     * konfiguriert ist.
+     * @return SessionFactory Singleton
+     */
     private static SessionFactory createSingletonInstance() {
         File cfgFile = new File("src/hibernate.cfg.xml");
-        System.out.println(cfgFile.getAbsolutePath());
         return new Configuration()
                 .configure(cfgFile)
-//                .addResource("src/de/jahresprojekt/persistence/OrtPojo.hbm.xml")
-//                .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect")
-//                .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver")
-//                .setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" 
-//                        + HibernateUtils.DB_NAME + "?zeroDateTimeBehavior=convertToNull")
-//                .setProperty("hibernate.connection.username", "root")
-//                .setProperty("hibernate.hbm2ddl.auto", "update")
-//                .setProperty("show_sql", "true")
-//                .setProperty("format_sql", "true")
-//                .setProperty("use_sql_comments", "true")
+                .buildSessionFactory();
+    }
+    
+    @Deprecated
+    private static SessionFactory createLegacySingletonInstance() {
+                return new Configuration()
+                .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect")
+                .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver")
+                .setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" 
+                        + HibernateUtils.DB_NAME + "?zeroDateTimeBehavior=convertToNull")
+                .setProperty("hibernate.connection.username", "root")
+                .setProperty("hibernate.hbm2ddl.auto", "update")
+                .setProperty("show_sql", "true")
+                .setProperty("format_sql", "true")
+                .setProperty("use_sql_comments", "true")
                 .buildSessionFactory();
     }
     

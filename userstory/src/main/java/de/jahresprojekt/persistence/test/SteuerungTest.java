@@ -17,7 +17,10 @@ import org.hibernate.Transaction;
  */
 public class SteuerungTest {
     
-    
+    /**
+     * Main zum Testen
+     * @param args 
+     */
     public static void main(String[] args) {
         Transaction tx = HibernateUtils.getOpenSession().beginTransaction();
         OrtDao dao = new OrtDao();
@@ -32,52 +35,4 @@ public class SteuerungTest {
         
     }
     
-    public Ort addOrt(int plz, String name) {
-        
-        Session session = HibernateUtils.getNewSession();
-        Transaction tx = null;
-        
-        try {
-            tx = session.beginTransaction();
-            Ort ort = new Ort(name, plz);
-            long id = (long) session.save(ort);
-            System.out.println("id von ort " + id);
-            tx.commit();
-            return ort;
-        } catch (Exception e) {
-            if(tx!=null) {
-                tx.rollback();
-                e.printStackTrace();
-            }
-        } finally {
-            session.close();
-        }
-        
-        return null;
-    }
-    
-    public Ort getOrtByID(long iD) {
-        Session session = HibernateUtils.getNewSession();
-        Transaction tx = null;
-        
-        Ort loaded = null;
-        
-        try {
-            tx = session.beginTransaction();
-            
-            loaded = session.get(Ort.class, iD);
-
-            System.out.println("geladener ort " + loaded.getName() + " " + loaded.getPlz());
-            tx.commit();
-        } catch (Exception e) {
-            if(tx!=null) {
-                tx.rollback();
-                e.printStackTrace();
-            }
-        } finally {
-            session.close();
-        }
-        
-        return loaded;
-    }
 }
