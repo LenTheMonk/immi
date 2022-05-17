@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Rechner Page</title> 
+</h:head>
+<h:body>
+   <h:form id="testFormR">
+       
+        <p:growl id="infoMsg" showDetail="true"/> 
+        
+        <h1>Rechnerverwaltung</h1>
+        <br/><br/>
+        <a href="drucker.xhtml" >Druckerverwaltung</a>
+        <a href="raum.xhtml" >Raumverwaltung</a>
+        <br/><br/>
+        
+        <p:panelGrid columns="2" styleClass="ui-panelgrid-blank ui-fluid" > 
+            
+            <p:outputLabel for="ipID" value="ID"/>
+            <p:inputText id="ipID" value="#{rechnerBean.rechner.id}" disabled="true"/>
+            
+            <p:outputLabel for="ipSerial" value="Seriennummer"/>
+            <p:inputText id="ipSerial" value="#{rechnerBean.rechner.serienNummer}"/>
+            
+            <p:outputLabel for="ipModel" value="Modell"/>
+            <p:inputText id="ipModel" value="#{rechnerBean.rechner.modell}"/>
+            
+            <p:outputLabel for="ipManufacturer" value="Hersteller"/>
+            <p:inputText id="ipManufacturer" value="#{rechnerBean.rechner.hersteller}"/>
+            
+            <p:outputLabel for="ipStatus" value="Status"/>
+            <p:selectOneMenu id="ipStatus" value="#{rechnerBean.rechner.status}">
+               <f:selectItem itemValue = "OK" itemLabel = "OK" /> 
+               <f:selectItem itemValue = "in Reparatur" itemLabel = "in Reparatur" />
+               <f:selectItem itemValue = "defekt" itemLabel = "defekt" />
+            </p:selectOneMenu>    
+            
+            <p:outputLabel for="ipCpu" value="CPU"/>
+            <p:inputText id="ipCpu" value="#{rechnerBean.rechner.cpu}"/>
+            
+            <p:outputLabel for="ipRAM" value="Arbeitsspeicher"/>
+            <p:inputNumber id="ipRAM" value="#{rechnerBean.rechner.arbeitsspeicher}"/>
+            
+            <p:outputLabel for="ipOS" value="Betriebssystem"/>
+            <p:inputText id="ipOS" value="#{rechnerBean.rechner.betriebssystem}"/>
+            
+            <p:outputLabel for="ipType" value="Typ"/>
+            <p:selectOneMenu id="ipType" value="#{rechnerBean.rechner.typ}">
+                <f:selectItem itemValue = "Gaming-PC" itemLabel = "Gaming-PC" />
+                <f:selectItem itemValue = "Multimedia-PC" itemLabel = "Multimedia-PC" /> 
+                <f:selectItem itemValue = "Office-PC" itemLabel = "Office-PC" /> 
+            </p:selectOneMenu>
+            
+            <p:outputLabel for="ipGraphics" value="Grafikkarte"/>
+            <p:inputText id="ipGraphics" value="#{rechnerBean.rechner.grafikkarte}"/>
+            
+            <p:outputLabel for="ipSSD" value="SSD Festplatte (GB)"/>
+            <p:inputNumber id="ipSSD" value="#{rechnerBean.rechner.festplatte_ssd}"/>
+            
+            <p:outputLabel for="ipHDD" value="HDD Festplatte (GB)"/>
+            <p:inputNumber id="ipHDD" value="#{rechnerBean.rechner.festplatte_hdd}"/>
+            
+            <p:outputLabel for="ipGuarantee" value="Herstellergarantie Monate"/>
+            <p:inputNumber id="ipGuarantee" value="#{rechnerBean.rechner.herstellergarantie}" decimalPlaces="0" minValue="1" maxValue="12"/>
+            
+            <p:outputLabel for="ipDeliveryDate" value="Lieferdatum"/>
+            <p:datePicker id="ipDeliveryDate" value="#{rechnerBean.rechner.lieferDatum}"/>
+
+            <p:outputLabel for="ipRoomRSelect" value="Raum"/>
+            <p:outputPanel id="ipRoomRPanel" style="display:block">
+                <p:inputText value="#{rechnerBean.rechner.raum.bezeichnung}" style="width: 150px;" disabled="true"
+                             rendered="#{rechnerBean.rechner.hasRaum()}" />
+                &nbsp;&nbsp;
+                <p:commandButton id="ipRoomRSelect" onclick="PF('dlgRoomR').show();" icon="fa fa-plus"
+                                 rendered="#{not rechnerBean.rechner.hasRaum()}"/>
+                <p:commandButton id="ipRoomRDelete" action="#{rechnerBean.rechner.raum.removeHardware(rechnerBean.rechner)}"
+                                 icon="fa fa-trash" style="font-size: 15px; height: 30px; width: 30px;"
+                                 update=":testFormR" rendered="#{rechnerBean.rechner.hasRaum()}"/>
+            </p:outputPanel>
+            
+        </p:panelGrid>
+        <br/>
+        
+        <p:commandButton value="Speichern" action="#{rechnerBean.addRechner()}" update=":testFormR" style="text-shadow: none; box-shadow: none; background: #00ccff; color: white; align-content: center; padding: 6px; width: 180px;" />
+        &nbsp;
+        <p:commandButton value="Reset" action="#{rechnerBean.resetRechner()}" update=":testFormR" style="text-shadow: none; box-shadow: none; background: #00ccff; color: white; align-content: center; padding: 6px; width: 180px;" />
+        <br/><br/><br/><br/> 
+
+        <p:dataTable value="#{rechnerBean.rechnerList}" var="rechner" style="width: 700px; border-collapse: none;"> 
+            <p:column headerText="ID" style="box-shadow: none;">
+                <h:outputText value="#{rechner.id}" />
+            </p:column>
+            <p:column headerText="Hersteller" style="box-shadow: none;">
+                <h:outputText value="#{rechner.hersteller}" />
+            </p:column>
+            <p:column headerText="Modell" style="box-shadow: none;">
+                <h:outputText value="#{rechner.modell}" />
+            </p:column>
+            <p:column headerText="Raum" style="box-shadow: none;">
+                <h:outputText value="#{rechner.raum.bezeichnung}" />
+            </p:column>
+            <p:column headerText="Optionen" style="box-shadow: none;">
+                <p:commandLink value="bearbeiten" action="#{rechnerBean.setRechner(rechner)}" update=":testFormR"/>
+                &nbsp;&nbsp;&nbsp;
+                <p:commandLink value="l&ouml;schen" action="#{rechnerBean.deleteRechner(rechner)}" update=":testFormR"/>
+            </p:column>        
+        </p:dataTable>
+
+    </h:form>     
+    
+        <p:dialog header="Raum zuordnen" widgetVar="dlgRoomR" modal="true" position="center,top" style="margin-top: 40px;">
+        <div style="width: 600px; margin: 0px 10px 10px 10px;">
+
+            <h:form id="dlgRoomRForm">
+                <p:scrollPanel mode="native" style="width: 100%; height: 300px; margin-top: 7px;">
+                    <p:dataTable id="roomsTable" var="raum" value="#{raumBean.raumList}" style="width: 100%;">
+                        <p:column headerText="Raumbezeichnung">
+                            <h:outputText value="#{raum.bezeichnung}" />
+                        </p:column> 
+                        <p:column headerText="Raumtyp">
+                            <h:outputText value="#{raum.typ}" />
+                        </p:column>
+                        <p:column headerText="Optionen" style="width: 110px; text-align: center;">
+                            <p:commandLink  action="#{raum.addHardware(rechnerBean.rechner)}" onclick = "PF('dlgRoomR').hide();" update=":testFormR">
+                                <i class="fa fa-plus" />
+                            </p:commandLink>
+                        </p:column>
+
+                    </p:dataTable>
+                </p:scrollPanel>
+
+                <br/>
+                <p:commandButton title="Close" style="width: 120px;" onclick="PF('dlgRoomR').hide();" update=":testFormR" immediate="true"/>
+
+            </h:form>
+
+        </div>
+    </p:dialog>
+        
+</h:body>
+</html>
