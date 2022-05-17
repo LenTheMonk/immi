@@ -5,6 +5,7 @@
  */
 package de.jahresprojekt.persistence.dao.base;
 
+import java.util.List;
 import javax.persistence.PersistenceException;
 import org.hibernate.Transaction;
 
@@ -20,7 +21,20 @@ public interface IHibernateDao<IBasePOJO>{
      * @param iD ID zu der geladen werden soll
      * @return POJO das geladen wurde
      */
-    IBasePOJO getByID(long iD);
+    IBasePOJO getByID(Long iD);
+    
+    /**
+     * Lädt eine Liste an Pojos anhand ihrer IDs.
+     * @param iDs IDs zu denen geladen werden soll
+     * @return Liste der POJOs die geladen wurden
+     */
+    List<IBasePOJO> getByID(List<Long> iDs);
+    
+    /**
+     * Lädt alle Pojos aus der DB.
+     * @return Liste der POJOs die geladen wurden
+     */
+    List<IBasePOJO> getAll();
     
     /**
      * Speichert/Updated ein Pojo in der DB.
@@ -30,4 +44,14 @@ public interface IHibernateDao<IBasePOJO>{
      * @return ID des gespeicherten Pojo
      */
     Long save(IBasePOJO pojo, Transaction tx) throws PersistenceException;
+    
+    /**
+     * Speichert/Updated eine Liste an POJOs in der DB.
+     * Die Transaktion muss mitgeliefert werden.
+     * @param pojos Liste der Pojos
+     * @param tx Transaktion
+     * @return IDs der gespeicherten Pojos
+     */
+    List<Long> save(List<IBasePOJO> pojos, Transaction tx)
+        throws PersistenceException;
 }

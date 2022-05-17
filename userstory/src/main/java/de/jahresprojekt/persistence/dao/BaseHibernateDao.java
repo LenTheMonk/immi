@@ -9,6 +9,8 @@ import de.jahresprojekt.persistence.dao.base.IHibernateDao;
 import de.jahresprojekt.persistence.utils.HibernateUtils;
 import org.hibernate.Transaction;
 import de.jahresprojekt.persistence.entities.base.IPojo;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.PersistenceException;
 
 
@@ -49,7 +51,7 @@ public abstract class BaseHibernateDao<T extends IPojo>
     abstract Class getPojoClass();
 
     @Override
-    public T getByID(long iD) {
+    public T getByID(Long iD) {
         T pojo = null;
         
         try {
@@ -58,6 +60,33 @@ public abstract class BaseHibernateDao<T extends IPojo>
             e.printStackTrace();
         }
         return pojo;
+    }
+
+    @Override
+    public List<T> getAll() {
+        List<T> pojos = new ArrayList<>();
+        
+        // TODO @Lukas Eckert
+        
+        return pojos;
+    }
+
+    @Override
+    public List<Long> save(List<T> list, Transaction t) throws PersistenceException {
+        List<Long> savedIDs = new ArrayList<>();
+        
+        // TODO @Lukas Eckert
+        
+        return savedIDs;
+    }
+
+    @Override
+    public List<T> getByID(List<Long> list) {
+        List<T> pojos = new ArrayList<>();
+        
+        // TODO @Lukas Eckert
+        
+        return pojos;   
     }
     
 }
