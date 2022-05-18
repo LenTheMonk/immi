@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\old\RechnerBeanOld.java
 C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\DruckerBean.java
 C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\Raum.java
@@ -10,3 +11,14 @@ C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\e
 C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\Hardware.java
 C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\old\DruckerBeanOld.java
 C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\RaumBean.java
+=======
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\entities\base\IPojo.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\dao\base\IHibernateDao.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\dao\OrtDao.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\service\LogikBean.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\dao\BaseHibernateDao.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\test\SteuerungTest.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\entities\Ort.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\entities\base\BasePojo.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\utils\HibernateUtils.java
+>>>>>>> Stashed changes

@@ -88,7 +88,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+<<<<<<< Updated upstream
                 <version>3.3.2</version>
+=======
+                <version>3.2.2</version>
+>>>>>>> Stashed changes
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
