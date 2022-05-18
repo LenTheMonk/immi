@@ -29,5 +29,5 @@ public interface IPojo extends Serializable {
      * Setzt ID des POJO.
      * @param iD ID
      */
-    void setID(long iD);
+    void setId(long iD);
 }

@@ -71,7 +71,7 @@ public class Ort extends BasePojo {
     }
 
     @Override
-    public void setID(long iD) {
+    public void setId(long iD) {
         this.id = iD;
     }
     
