@@ -1,4 +1,4 @@
-package de.deuka.eckert.userstory.view;
+package de.jahresprojekt.tutorial.view;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

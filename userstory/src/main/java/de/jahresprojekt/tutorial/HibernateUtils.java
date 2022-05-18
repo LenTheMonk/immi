@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.deuka.eckert.userstory;
+package de.jahresprojekt.tutorial;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;

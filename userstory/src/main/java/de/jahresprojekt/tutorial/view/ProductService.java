@@ -1,4 +1,4 @@
-package de.deuka.eckert.userstory.view;
+package de.jahresprojekt.tutorial.view;
 
 
 import java.util.ArrayList;
