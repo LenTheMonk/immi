@@ -1,3 +1,5 @@
+package de.deuka.eckert.userstory.view;
+
 
 
 public enum InventoryStatus {

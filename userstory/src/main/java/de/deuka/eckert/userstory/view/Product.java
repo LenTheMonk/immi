@@ -1,3 +1,5 @@
+package de.deuka.eckert.userstory.view;
+
 
 import java.io.Serializable;
 import java.util.List;

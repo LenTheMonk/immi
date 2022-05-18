@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header>
+            
+        </header>
+        <main>
+            <h:form>
+                <div class="card">
+                    <h5>Basic</h5>
+                    <p:dataTable var="product" value="#{dtSortView.products1}" allowUnsorting="true" sortMode="single">
+                        <p:column sortBy="#{product.code}" headerText="Code">
+                            <h:outputText value="#{product.code}"/>
+                        </p:column>
+                        <p:column sortBy="#{product.name}" headerText="Name" sortOrder="asc">
+                            <h:outputText value="#{product.name}"/>
+                        </p:column>
+                        <p:column sortBy="#{product.category}" headerText="Category">
+                            <h:outputText value="#{product.category}"/>
+                        </p:column>
+                        <p:column sortBy="#{product.quantity}" headerText="Quantity">
+                            <h:outputText value="#{product.quantity}"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+                <div class="card">
+                    <h5>Basic (shorthand notation)</h5>
+                    <p:dataTable var="product" value="#{dtSortView.products1}" allowUnsorting="true" sortMode="single">
+                        <p:column field="code" headerText="Code" filterable="false"/>
+                        <p:column field="name" headerText="Name" sortOrder="asc" filterable="false"/>
+                        <p:column field="category" headerText="Category" filterable="false"/>
+                        <p:column field="quantity" headerText="Quantity" filterable="false"/>
+                    </p:dataTable>
+                </div>
+                <div class="card">
+                    <h5>Default Sort</h5>
+                    <p:dataTable var="product" value="#{dtSortView.products2}" sortMode="multiple"
+                                 sortBy="#{dtSortView.sortBy}">
+                        <p:column field="code" headerText="Code" filterable="false"/>
+                        <p:column field="name" headerText="Name" filterable="false"/>
+                        <p:column field="category" headerText="Category" filterable="false"/>
+                        <p:column field="quantity" headerText="Quantity" filterable="false"/>
+                    </p:dataTable>
+                </div>
+                <div class="card">
+                    <h5>Multiple Columns</h5>
+                    <p>Use metakey to add a column to the sort selection.</p>
+
+                    <p:dataTable var="product" value="#{dtSortView.products3}" sortMode="multiple">
+                        <p:column headerText="Code" sortBy="#{product.code}">
+                            <h:outputText value="#{product.code}"/>
+                        </p:column>
+
+                        <p:column headerText="Name" sortBy="#{product.name}">
+                            <h:outputText value="#{product.name}"/>
+                        </p:column>
+
+                        <p:column headerText="Category" sortBy="#{product.category}" sortOrder="asc" sortPriority="2">
+                            <h:outputText value="#{product.category}"/>
+                        </p:column>
+
+                        <p:column headerText="Quantity" sortBy="#{product.quantity}" sortOrder="desc" sortPriority="1">
+                            <h:outputText value="#{product.quantity}"/>
+                        </p:column>
+
+                        <p:column headerText="Price" sortBy="#{product.price}">
+                            <h:outputText value="#{product.price}">
+                                <f:convertNumber type="currency" currencySymbol="$"/>
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </h:form>
+        </main>
+        <footer>
+            
+        </footer>
+    </body>
+</html>
