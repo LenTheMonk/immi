@@ -4,6 +4,7 @@
  */
 package de.jahresprojekt.logic.service;
 
+
 import java.beans.*;
 import java.io.Serializable;
 
@@ -23,9 +24,14 @@ import javax.inject.Named;
 public class LogikBean implements Serializable {
     
     private Login login = new Login();
+    private String boolStr_LoginSuccess = "false";
+    
+    
     
     public void Btn_Login_Pressed(){
-        this.login.DoLogin();
+        if (this.login.DoLogin()){
+            this.boolStr_LoginSuccess = "true";
+        }
         System.out.println(this.login.Password_Hash);
     }
     

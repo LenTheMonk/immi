@@ -4,6 +4,7 @@
  */
 package de.jahresprojekt.logic.service;
 
+
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -16,10 +17,18 @@ import java.security.NoSuchAlgorithmException;
 public class Login {
     private String Username;
     private String Password;
+    public String Found_UserID;
     public String Password_Hash;
     
-    public void DoLogin(){
+    public boolean DoLogin(){
         this.Password_Hash = this.GetHash(this.Password);
+        if(this.Password_Hash == "testhash" && this.Username == "TestUsername" ){
+            this.Found_UserID = "1";
+            return true;
+        } 
+        else{
+            return false;
+        }
     }
     
     private String GetHash(String input)

@@ -4,6 +4,7 @@
  */
 package de.jahresprojekt.logic.service;
 
+
 /**
  *
  * @author Alex
