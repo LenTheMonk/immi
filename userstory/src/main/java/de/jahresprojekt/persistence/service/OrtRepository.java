@@ -12,7 +12,7 @@ import de.jahresprojekt.persistence.entities.Ort;
  *
  * @author Lukas Eckert
  */
-public class OrtRepository extends BaseRepository<Ort>{
+public class OrtRepository extends BaseRepository<Ort> {
 
     @Override
     Class getManagedClass() {
