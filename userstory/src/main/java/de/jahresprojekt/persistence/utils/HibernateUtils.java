@@ -6,6 +6,7 @@
 package de.jahresprojekt.persistence.utils;
 
 import java.io.File;
+import javax.persistence.EntityManager;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
@@ -19,6 +20,7 @@ public class HibernateUtils {
     private static final SessionFactory factorySingleton = HibernateUtils.createSingletonInstance();
     private static final String DB_NAME = "jahresprojekt";
     private static Session openSession = null;
+    private static EntityManager openManager = null;
     
     public static SessionFactory getFactorySingleton() {
         return HibernateUtils.factorySingleton;
@@ -54,6 +56,29 @@ public class HibernateUtils {
         return new Configuration()
                 .configure(cfgFile)
                 .buildSessionFactory();
+    }
+    
+    /**
+     * Liefert einen aktuellen EntityManager.
+     * @return EntityManager
+     */
+    public static EntityManager getCurrentEntityManager() {
+        if (openManager == null || !openManager.isOpen()) {
+           openManager = getOpenSession().getEntityManagerFactory()
+                   .createEntityManager();
+        }
+        return openManager;
+    }
+    
+    /**
+     * Zerstört Session und EntityManager.
+     */
+    public static void shutdownAndCleanup() {
+        openManager.close();
+        openSession.getEntityManagerFactory().close();
+        openSession.close();
+        openManager = null;
+        openSession = null;
     }
     
     // Alter Kram aus einer Übungsaufgabe. Erstmal so lassen.

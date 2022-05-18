@@ -29,7 +29,7 @@ public class SteuerungTest {
         EntityManager manager = HibernateUtils.getOpenSession()
             .getEntityManagerFactory().createEntityManager();
         
-        OrtRepository ortRep = new OrtRepository(manager);
+        OrtRepository ortRep = new OrtRepository();
         
         List<Ort> orte = ortRep.findAll();
         
