@@ -140,7 +140,5 @@ public abstract class BaseRepository<T extends BasePojo>
             e.printStackTrace();
         }
     }
-
-    
     
 }

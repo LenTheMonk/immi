@@ -33,7 +33,17 @@ public class SteuerungTest {
         
         List<Ort> orte = ortRep.findAll();
         
+        ortRep.delete(orte.get(1));
+        
+        orte = ortRep.findAll();
+        
+        orte.get(0).setName("Krähenfeld");
+        orte.add(new Ort("Tschüsseldorf", 2293));
+        ortRep.save(orte);
+        
         System.out.println("de.jahresprojekt.persistence.test.SteuerungTest.main()");
+        
+
 //        Transaction tx = HibernateUtils.getOpenSession().beginTransaction();
 //        OrtDao dao = new OrtDao();
 //        Ort ort = new Ort("Krefeld", 47800);
