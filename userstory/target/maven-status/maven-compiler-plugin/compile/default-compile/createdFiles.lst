@@ -1,8 +1,14 @@
 de\deuka\eckert\userstory\Hardware.class
 de\deuka\eckert\userstory\Raum.class
 de\deuka\eckert\userstory\Rechner.class
+de\jahresprojekt\logic\service\ZahlungsManager.class
 de\deuka\eckert\userstory\Drucker.class
+de\jahresprojekt\logic\service\LogikBean.class
 de\deuka\eckert\userstory\GenericBean.class
+de\jahresprojekt\logic\service\CurrUser.class
+de\jahresprojekt\logic\service\MieterManager.class
 de\deuka\eckert\userstory\RaumBean.class
+de\jahresprojekt\logic\service\Login.class
+de\jahresprojekt\logic\service\immobilienManager.class
 de\deuka\eckert\userstory\DruckerBean.class
 de\deuka\eckert\userstory\RechnerBean.class

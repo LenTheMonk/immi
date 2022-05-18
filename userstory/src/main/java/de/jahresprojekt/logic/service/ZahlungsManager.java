@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package de.jahresprojekt.logic.service;
+package de.jahresprojekt.logic.ClassTypes;
 
 /**
  *
