@@ -8,6 +8,7 @@ package de.jahresprojekt.persistence.service;
 import de.jahresprojekt.persistence.entities.base.BasePojo;
 import de.jahresprojekt.persistence.service.base.IRepository;
 import de.jahresprojekt.persistence.utils.HibernateUtils;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
@@ -20,7 +21,8 @@ import javax.persistence.criteria.CriteriaQuery;
  * @author Lukas Eckert
  * @param <T> Generic Pojo
  */
-public abstract class BaseRepository<T extends BasePojo> implements IRepository<T> {
+public abstract class BaseRepository<T extends BasePojo>
+        implements IRepository<T> {
     private final EntityManager manager;
 
     /**
@@ -77,10 +79,31 @@ public abstract class BaseRepository<T extends BasePojo> implements IRepository<
     }
 
     @Override
+    public List<Optional<T>> save(List<T> list) {
+        List<Optional<T>> ergebnis = new ArrayList<>();
+        try {
+            EntityTransaction et = manager.getTransaction();
+            et.begin();
+            for (T element : list) {
+                ergebnis.add(this.save(element, et));
+            }
+            et.commit();
+            return ergebnis;
+        } catch (Exception e) {
+            manager.getTransaction().rollback();
+            e.printStackTrace();
+        }
+        return ergebnis;
+    }
+
+    @Override
     public void delete(T obj) {
         try {
             manager.getTransaction().begin();
-            obj = (T) manager.find(getManagedClass(), obj.getId());
+            obj = this.findById(obj.getId()).get();
+            if (obj == null) {
+                return;
+            }
             manager.remove(obj);
             manager.getTransaction().commit();
         } catch (Exception e) {
@@ -88,5 +111,36 @@ public abstract class BaseRepository<T extends BasePojo> implements IRepository<
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void delete(T obj, EntityTransaction et) {
+        try {
+            obj = this.findById(obj.getId()).get();
+            if (obj == null) {
+                return;
+            }
+            manager.remove(obj);
+        } catch (Exception e) {
+            manager.getTransaction().rollback();
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteList(List<T> list) {
+            try {
+                EntityTransaction et = manager.getTransaction();
+                et.begin();
+                for (T element : list) {
+                    this.delete(element, et);
+                }
+                et.commit();
+        } catch (Exception e) {
+            manager.getTransaction().rollback();
+            e.printStackTrace();
+        }
+    }
+
+    
     
 }
