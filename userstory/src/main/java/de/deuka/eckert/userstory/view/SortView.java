@@ -8,8 +8,17 @@
  *
  * @author Hinsch
  */
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.model.SortMeta;
+
+import org.primefaces.model.SortOrder;
 
 @Named("dtSortView")
 @ViewScoped
@@ -28,7 +37,7 @@ public class SortView implements Serializable {
         products1 = service.getProducts(10);
         products2 = service.getProducts(10);
         products3 = service.getProducts(50);
-
+        
         sortBy = new ArrayList<>();
         sortBy.add(SortMeta.builder()
                 .field("name")
