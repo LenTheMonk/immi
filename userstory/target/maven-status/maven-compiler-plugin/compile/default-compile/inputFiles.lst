@@ -1,24 +1,9 @@
-<<<<<<< Updated upstream
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\old\RechnerBeanOld.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\DruckerBean.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\Raum.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\RechnerBean.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\HibernateUtils.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\Rechner.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\GenericBean.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\old\RaumBeanOld.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\Drucker.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\Hardware.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\old\DruckerBeanOld.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\deuka\eckert\userstory\RaumBean.java
-=======
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\entities\base\IPojo.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\dao\base\IHibernateDao.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\dao\OrtDao.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\service\Login.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\service\ZahlungsManager.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\service\CurrUser.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\service\immobilienManager.java
 C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\service\LogikBean.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\dao\BaseHibernateDao.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\test\SteuerungTest.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\entities\Ort.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\entities\base\BasePojo.java
-C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\persistence\utils\HibernateUtils.java
->>>>>>> Stashed changes
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\service\MieterManager.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\ClassTypes\Immobilie.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\ClassTypes\Mieter.java
+C:\Users\Alex\Documents\NetBeansProjects\immi\userstory\src\main\java\de\jahresprojekt\logic\ClassTypes\Zahlung.java
