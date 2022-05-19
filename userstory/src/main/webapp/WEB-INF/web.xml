@@ -56,7 +56,7 @@
 
     <!-- Welcome -->       
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>loginRedux.xhtml</welcome-file>
     </welcome-file-list>
       
 

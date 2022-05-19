@@ -19,7 +19,7 @@ import javax.inject.Named;
  * @author Hinsch
  */
 
-@Named
+@Named(value = "pS")
 @ApplicationScoped
 public class ProductService {
 

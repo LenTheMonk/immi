@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
  *
  * @author Lukas Eckert
  */
-public class HashUtils { 
+public abstract class HashUtils { 
     
     /**
      * Hasht einen String.

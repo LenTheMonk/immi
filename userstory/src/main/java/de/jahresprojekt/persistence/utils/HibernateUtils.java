@@ -15,7 +15,7 @@ import org.hibernate.cfg.Configuration;
  *
  * @author Lukas
  */
-public class HibernateUtils {
+public abstract class HibernateUtils {
     
     private static final SessionFactory factorySingleton = HibernateUtils.createSingletonInstance();
     private static final String DB_NAME = "jahresprojekt";

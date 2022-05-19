@@ -32,6 +32,7 @@
       
         <!-- List of Class files -->
         <mapping class="de.jahresprojekt.persistence.entities.Ort"/>
+        <mapping class="de.jahresprojekt.persistence.entities.Nutzer"/>
         <!--<mapping resource = "main/java/de/jahresprojekt/persistence/OrtPojo.hbm.xml"/>-->
       
     </session-factory>

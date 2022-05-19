@@ -21,18 +21,18 @@
             <h1 style="text-align: center; margin-bottom:10px">Anmelden</h1>
                 <form id="autoQuoteForm" >
                     <div>
-                      <input id="email" value="" style="margin: 45px; border: none;padding-top: 10px; outline: none;width: 80%;
-                         border-bottom: 1px solid #fff; background: transparent; color: #fff"  type="email" placeholder="example@email.com" />
+                      <input id="nutzername" value="" style="margin: 45px; border: none;padding-top: 10px; outline: none;width: 80%;
+                         border-bottom: 1px solid #fff; background: transparent; color: #fff"  type="nutzername" placeholder="example@email.com" />
                     </div>
     
                     <div>
                         <input id="password" value=""  style="margin: 45px; border: none; outline: none; width: 80%; 
-                         border-bottom: 1px solid #fff;padding-top: 10px; background: transparent ;color: #fff" type="password" placeholder="Kentwort" />
+                         border-bottom: 1px solid #fff;padding-top: 10px; background: transparent ;color: #fff" type="password" placeholder="Passwort" />
                     </div>
                    
                      <input style="margin: 45px; border: 1px solid #fff; width: 80%; padding: 10px ; 
-                          background: transparent; color: #fff; font-size: 20px" type="button" 
-                          onclick="window.location.href = 'http://localhost:8080/immobilien/startSeite.xhtml';" value="Los Geht!"/>
+                            background: transparent; color: #fff; font-size: 20px" type="button" action="#{loginService.doLogin()}"
+                          onclick="window.location.href = 'http://localhost:8080/immobilien/startSeite.xhtml';" value="Login!"/>
                     
               
                 </form>

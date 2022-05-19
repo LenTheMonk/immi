@@ -5,8 +5,11 @@
  */
 package de.jahresprojekt.persistence.test;
 
+import de.jahresprojekt.logic.util.HashUtils;
+import de.jahresprojekt.persistence.entities.Nutzer;
 import de.jahresprojekt.persistence.utils.HibernateUtils;
 import de.jahresprojekt.persistence.entities.Ort;
+import de.jahresprojekt.persistence.service.NutzerRepository;
 import de.jahresprojekt.persistence.service.OrtRepository;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -25,20 +28,12 @@ public class SteuerungTest {
      */
     public static void main(String[] args) {
         
-        EntityManager manager = HibernateUtils.getOpenSession()
-            .getEntityManagerFactory().createEntityManager();
+
+        NutzerRepository rep = new NutzerRepository();
         
-        OrtRepository ortRep = new OrtRepository();
-        
-        List<Ort> orte = ortRep.findAll();
-        
-        ortRep.delete(orte.get(1));
-        
-        orte = ortRep.findAll();
-        
-        orte.get(0).setName("Krähenfeld");
-        orte.add(new Ort("Tschüsseldorf", 2293));
-        ortRep.save(orte);
+        rep.save(new Nutzer("Owner", HashUtils.getHash("noctis"), Boolean.TRUE,
+                "Lukas", "Eckert", "eckert@web.de",
+                "12345 667788", "0815 87654321"));
         
         System.out.println("de.jahresprojekt.persistence.test.SteuerungTest.main()");
         

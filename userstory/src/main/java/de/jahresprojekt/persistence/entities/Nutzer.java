@@ -67,13 +67,16 @@ public class Nutzer extends BasePojo {
     
     public Nutzer(
         String aNutzername, String aPasswort, Boolean aIstAdministrator,
-        String aVorname, String aName, String aFestnetz, String aMobil) {
-    	nutzername = aNutzername;
-        passwort = aPasswort;
-        istAdministrator = aIstAdministrator;
-        vorname = aVorname;
-        name = aName;
-        festnetz = aFestnetz;
+        String aVorname, String aName, String aEmail, String aFestnetz,
+        String aMobil) {
+            nutzername = aNutzername;
+            passwort = aPasswort;
+            istAdministrator = aIstAdministrator;
+            vorname = aVorname;
+            name = aName;
+            email = aEmail;
+            festnetz = aFestnetz;
+            mobil = aMobil;
     }
     
     @Override
