@@ -36,10 +36,12 @@ public class Nutzer extends BasePojo {
     @GeneratedValue
     private long id;
     
-    @Column(nullable = false)
+    public static final String MAP_NUTZERNAME = "nutzername";
+    @Column(nullable = false, name = Nutzer.MAP_NUTZERNAME)
     private String nutzername;
     
-    @Column(nullable = false)
+    public static final String MAP_PASSWORT = "passwort";
+    @Column(nullable = false, name = Nutzer.MAP_PASSWORT)
     private String passwort;
     
     @Column(nullable = false)

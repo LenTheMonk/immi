@@ -5,6 +5,7 @@
  */
 package de.jahresprojekt.persistence.service;
 
+import de.jahresprojekt.persistence.entities.Nutzer;
 import de.jahresprojekt.persistence.entities.base.BasePojo;
 import de.jahresprojekt.persistence.service.base.IRepository;
 import de.jahresprojekt.persistence.utils.HibernateUtils;
@@ -23,7 +24,7 @@ import javax.persistence.criteria.CriteriaQuery;
  */
 public abstract class BaseRepository<T extends BasePojo>
         implements IRepository<T> {
-    private final EntityManager manager;
+    protected final EntityManager manager;
 
     /**
      * Konstruktor.
