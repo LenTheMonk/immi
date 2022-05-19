@@ -11,7 +11,6 @@ import java.util.Optional;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import net.bytebuddy.asm.Advice;
 
 /**
  *
@@ -35,13 +34,18 @@ public class NutzerRepository extends BaseRepository<Nutzer>{
         query.where(builder.equal(root.get(Nutzer.MAP_NUTZERNAME), name));
         query.where(builder.equal(root.get(Nutzer.MAP_PASSWORT), hashPw));
         
+        System.out.println("Name: " + name + " PW: " + hashPw);
+        System.out.println(query.toString());
+        
         // Nutzer ermitteln
         List<Nutzer> ergebnis = manager.createQuery(query).getResultList();
         if (ergebnis.size() == 1) {
-           return Optional.of(ergebnis.get(0));
+            System.out.println("Nutzer vorhanden!");
+            return Optional.of(ergebnis.get(0));
         }
         
         // Kein Nutzer ermittelt
+        System.out.println("Kein Nutzer vorhanden!");
         return Optional.empty();
     }
 }

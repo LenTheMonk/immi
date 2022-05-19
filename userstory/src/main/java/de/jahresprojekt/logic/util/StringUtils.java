@@ -17,6 +17,7 @@ public abstract class StringUtils {
      * @return true wenn null oder leer
      */
     public static boolean isEmpty(String input) {
+        System.out.println("prüfe string " + input);
         if (input == null) return true;
         return input.isBlank();
     }

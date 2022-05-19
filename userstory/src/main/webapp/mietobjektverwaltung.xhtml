@@ -30,7 +30,7 @@ import de.deuka.eckert.userstory.immi.view.SortView; -->
             <h:form>
                 <div class="card">
                     <h5>Mietobjekte</h5>
-                    <p:dataTable var="product" value="#{dtSortView.products1}" allowUnsorting="true" sortMode="single">
+                    <p:dataTable var="product" value="#{sdf.products1}" allowUnsorting="true" sortMode="single">
                         <p:column sortBy="#{product.code}" headerText="Code">
                             <h:outputText value="#{product.code}"/>
                         </p:column>

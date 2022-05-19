@@ -56,7 +56,7 @@
 
     <!-- Welcome -->       
     <welcome-file-list>
-        <welcome-file>loginRedux.xhtml</welcome-file>
+        <welcome-file>ganserStyleLogin.xhtml</welcome-file>
     </welcome-file-list>
       
 

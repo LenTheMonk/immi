@@ -21,26 +21,11 @@ import javax.inject.Named;
 @SessionScoped
 public class LoginService implements Serializable {
     
-    private final NutzerRepository nutzerRep = new NutzerRepository();
+    private NutzerRepository nutzerRep;
     private Nutzer activeUser;
     
     private String passwordInput;
     private String usernameInput;
-    
-    public boolean doLogin() {
-        if (StringUtils.isEmpty(usernameInput) ||
-            StringUtils.isEmpty(passwordInput)) {
-                return false;
-        }
-        
-        this.activeUser = nutzerRep
-            .getNutzerByLogin(usernameInput, HashUtils.getHash(passwordInput))
-            .orElse(null);
-        
-        System.out.println(activeUser.getName());
-        
-        return activeUser != null;
-    }
     
     // Getter Setter
     
@@ -57,10 +42,16 @@ public class LoginService implements Serializable {
     }
 
     public void setPasswordInput(String passwordInput) {
+        System.out.println("");
+        System.out.println("");
+        System.out.println(passwordInput);
+        System.out.println("");
+        System.out.println("");
         this.passwordInput = passwordInput;
     }
 
     public void setUsernameInput(String usernameInput) {
+        System.out.println(usernameInput);
         this.usernameInput = usernameInput;
     }
 
@@ -68,4 +59,27 @@ public class LoginService implements Serializable {
         return usernameInput;
     }
     
+    public NutzerRepository getNutzerRep() {
+        if (nutzerRep == null) {
+            nutzerRep = new NutzerRepository();
+        }
+        return nutzerRep;
+    }
+    
+    
+    public boolean doLogin() {
+        if (StringUtils.isEmpty(usernameInput) ||
+            StringUtils.isEmpty(passwordInput)) {
+                System.out.println("\n\nFELDER LEER\n\n");
+                return false;
+        }
+        
+        this.activeUser = getNutzerRep()
+            .getNutzerByLogin(usernameInput, HashUtils.getHash(passwordInput))
+            .orElse(null);
+        
+        System.out.println("Nutzer gefunden: " + activeUser.getName());
+        
+        return activeUser != null;
+    }
 }

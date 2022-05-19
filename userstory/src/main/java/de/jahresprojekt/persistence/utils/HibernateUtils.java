@@ -53,6 +53,7 @@ public abstract class HibernateUtils {
      */
     private static SessionFactory createSingletonInstance() {
         File cfgFile = new File("src/hibernate.cfg.xml");
+        System.out.println(cfgFile.getAbsolutePath());
         return new Configuration()
                 .configure(cfgFile)
                 .buildSessionFactory();
