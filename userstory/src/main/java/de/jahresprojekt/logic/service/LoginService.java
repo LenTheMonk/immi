@@ -10,6 +10,8 @@ import de.jahresprojekt.logic.util.StringUtils;
 import de.jahresprojekt.persistence.service.NutzerRepository;
 import de.jahresprojekt.persistence.entities.Nutzer;
 import java.io.Serializable;
+import javax.annotation.ManagedBean;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -24,10 +26,36 @@ public class LoginService implements Serializable {
     private NutzerRepository nutzerRep;
     private Nutzer activeUser;
     
-    private String passwordInput;
-    private String usernameInput;
+    private Daten daten = new Daten();
+    
+    protected int nummer;
+    
+    protected String hubert = "Hanswurst";
+    protected String username = "";
     
     // Getter Setter
+
+    public void setNummer(int nummer) {
+        System.out.println("##############set###################");
+        this.nummer = nummer;
+    }
+
+    public int getNummer() {
+        System.out.println("##############get##########################");
+        return nummer;
+    }
+
+    public Daten getDaten() {
+        return daten;
+    }
+
+    public void setDaten(Daten daten) {
+        this.daten = daten;
+    }
+    
+    
+    
+    
     
     public Nutzer getActiveUser() {
         return activeUser;
@@ -37,26 +65,29 @@ public class LoginService implements Serializable {
         this.activeUser = activeUser;
     }
 
-    public String getPasswordInput() {
-        return passwordInput;
+    public String getHubert() {
+        return hubert;
     }
 
-    public void setPasswordInput(String passwordInput) {
+    public void setHubert(String hubert) {
         System.out.println("");
         System.out.println("");
-        System.out.println(passwordInput);
+        System.out.println(hubert);
         System.out.println("");
         System.out.println("");
-        this.passwordInput = passwordInput;
+        this.hubert = hubert;
     }
 
-    public void setUsernameInput(String usernameInput) {
-        System.out.println(usernameInput);
-        this.usernameInput = usernameInput;
+    public void setUsername(String username) {
+        System.out.println(username);
+        this.username = username;
     }
 
-    public String getUsernameInput() {
-        return usernameInput;
+    public String getUsername() {
+        
+        System.out.println("\n\n\nHALLO WELT\n\n\n");
+        
+        return username;
     }
     
     public NutzerRepository getNutzerRep() {
@@ -68,18 +99,48 @@ public class LoginService implements Serializable {
     
     
     public boolean doLogin() {
-        if (StringUtils.isEmpty(usernameInput) ||
-            StringUtils.isEmpty(passwordInput)) {
+        if (StringUtils.isEmpty(username) ||
+            StringUtils.isEmpty(hubert)) {
                 System.out.println("\n\nFELDER LEER\n\n");
                 return false;
         }
         
         this.activeUser = getNutzerRep()
-            .getNutzerByLogin(usernameInput, HashUtils.getHash(passwordInput))
+            .getNutzerByLogin(username, HashUtils.getHash(hubert))
             .orElse(null);
         
         System.out.println("Nutzer gefunden: " + activeUser.getName());
         
         return activeUser != null;
+    }
+    
+    
+    public class Daten {
+
+        public Daten() {
+        }
+        
+        String nutzerNameDaten;
+        String nutzerPasswortDaten;
+
+        public String getNutzerNameDaten() {
+            System.out.println("\n\n\n" + nutzerNameDaten + "HIER WERT \n\n\n");
+            return nutzerNameDaten;
+        }
+
+        public String getNutzerPasswortDaten() {
+            return nutzerPasswortDaten;
+        }
+
+        public void setNutzerNameDaten(String nutzerNameDaten) {
+            System.out.println("\n\n\n HABE BEKOMMEN " + nutzerNameDaten + "\n\n\n");
+            this.nutzerNameDaten = nutzerNameDaten;
+        }
+
+        public void setNutzerPasswortDaten(String nutzerPasswortDaten) {
+            this.nutzerPasswortDaten = nutzerPasswortDaten;
+        }
+        
+        
     }
 }

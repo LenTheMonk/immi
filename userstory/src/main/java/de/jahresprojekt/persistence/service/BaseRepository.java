@@ -5,7 +5,6 @@
  */
 package de.jahresprojekt.persistence.service;
 
-import de.jahresprojekt.persistence.entities.Nutzer;
 import de.jahresprojekt.persistence.entities.base.BasePojo;
 import de.jahresprojekt.persistence.service.base.IRepository;
 import de.jahresprojekt.persistence.utils.HibernateUtils;
