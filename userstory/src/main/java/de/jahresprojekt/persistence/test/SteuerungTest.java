@@ -6,7 +6,6 @@
 package de.jahresprojekt.persistence.test;
 
 import de.jahresprojekt.persistence.utils.HibernateUtils;
-import de.jahresprojekt.persistence.dao.OrtDao;
 import de.jahresprojekt.persistence.entities.Ort;
 import de.jahresprojekt.persistence.service.OrtRepository;
 import java.util.List;
@@ -43,18 +42,6 @@ public class SteuerungTest {
         
         System.out.println("de.jahresprojekt.persistence.test.SteuerungTest.main()");
         
-
-//        Transaction tx = HibernateUtils.getOpenSession().beginTransaction();
-//        OrtDao dao = new OrtDao();
-//        Ort ort = new Ort("Krefeld", 47800);
-//        dao.save(ort, tx);
-//        Ort ort2 = new Ort("Düsseldorf", 43351);
-//        dao.save(ort2, tx);
-//        ort.setName("Crefeld");
-//        dao.save(ort, tx);
-//        Ort ort3 = new Ort("Crefeld", 47800);
-//        dao.save(ort3, tx);
-//        
     }
     
 }
