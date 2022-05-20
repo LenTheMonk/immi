@@ -60,18 +60,18 @@ public class user {
            //Abfrage ausführen
            s =  (Statement) conn.createStatement();
            
-           rs = s.executeQuery("select name from person");
+//           rs = s.executeQuery("select name from person");
            //result
                if(rs.next())
                    pruefung = true;
           
        } catch (Exception se)
        {
-            return "login.xhtml";
+            return "";
                     }
             
         if(pruefung)
-            return "login.xhtml";
+            return "";
         else 
         return null;
    }
