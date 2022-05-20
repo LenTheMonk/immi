@@ -33,6 +33,12 @@
         <!-- List of Class files -->
         <mapping class="de.jahresprojekt.persistence.entities.Ort"/>
         <mapping class="de.jahresprojekt.persistence.entities.Nutzer"/>
+        <mapping class="de.jahresprojekt.persistence.entities.Mieter"/>
+        <mapping class="de.jahresprojekt.persistence.entities.Mietkomplex"/>
+        <mapping class="de.jahresprojekt.persistence.entities.Mietobjekt"/>
+        <mapping class="de.jahresprojekt.persistence.entities.NebenkostenJahr"/>
+        <mapping class="de.jahresprojekt.persistence.entities.Ansprechpartner"/>
+        <mapping class="de.jahresprojekt.persistence.entities.Zahlung"/>
         <!--<mapping resource = "main/java/de/jahresprojekt/persistence/OrtPojo.hbm.xml"/>-->
       
     </session-factory>

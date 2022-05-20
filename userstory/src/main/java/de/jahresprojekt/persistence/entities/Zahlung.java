@@ -23,14 +23,13 @@ import java.util.List;
 import javax.persistence.Column;
 
 @Entity
-@Table(name = NebenkostenJahr.TABLE_NAME)
+@Table(name = Zahlung.TABLE_NAME)
 public class Zahlung extends BaseEntity{
 	
-	public static final String TABLE_NAME = "ZAHLUNG";
+    public static final String TABLE_NAME = "ZAHLUNG";
 	 
     @Id
     @GeneratedValue
-    @Column(name = "ZAHLUNG_ID")
     private long id;
     
     public static final String MAP_BEZEICHNUNG = "bezeichnung";
@@ -61,7 +60,7 @@ public class Zahlung extends BaseEntity{
     private String kreditinstitut;
     
     @OneToMany(mappedBy = Mietobjekt.MAP_ZAHLUNG,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Mietobjekt> mietobjekte = new ArrayList<>();
     
     public Zahlung() {
@@ -152,6 +151,10 @@ public class Zahlung extends BaseEntity{
     
     public List<Mietobjekt> getMietobjekte() {
         return mietobjekte;
+    }
+
+    public void setMietobjekte(List<Mietobjekt> mietobjekte) {
+        this.mietobjekte = mietobjekte;
     }
     
     public void addMietobjekt(Mietobjekt aMietobjekt) {

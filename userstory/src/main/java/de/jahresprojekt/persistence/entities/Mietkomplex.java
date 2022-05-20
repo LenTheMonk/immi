@@ -28,20 +28,20 @@ import javax.persistence.ManyToOne;
 @Table(name = Mietkomplex.TABLE_NAME)
 public class Mietkomplex extends BaseEntity{
 	
-	public static final String TABLE_NAME = "MIETKOMPLEX";
+    public static final String TABLE_NAME = "MIETKOMPLEX";
 	 
     @Id
     @GeneratedValue
     private long id;
         
-    @OneToMany(mappedBy = "mietkomplex",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @OneToMany(mappedBy = Mietobjekt.MAP_MIETKOMPLEX,
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Mietobjekt> mietobjekte = new ArrayList<>();
     
     public static final String MAP_MIETER = "mieter";
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
         CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name=BaseEntity.MAP_ID)
+    @JoinColumn(name="MIETER_MIETKOMPLEX")
     private Mieter mieter;
     
     public Mietkomplex() {

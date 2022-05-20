@@ -56,7 +56,7 @@
 
     <!-- Welcome -->       
     <welcome-file-list>
-        <welcome-file>vorlageStyleLogin.xhtml</welcome-file>
+        <welcome-file>startSeite.xhtml</welcome-file>
     </welcome-file-list>
       
 

@@ -81,32 +81,33 @@ public class Mietobjekt extends BaseEntity {
     public static final String MAP_MIETER = "mieter";
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
         CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) 
-    @JoinColumn(name=BaseEntity.MAP_ID)
+    @JoinColumn(name="MIETER_MIETOBJEKT")
     private Mieter mieter;
     
     //TODO: WIRD HIER DURCH DETACH DER MIETKOMPLEX GELÖSCHT?
     public static final String MAP_MIETKOMPLEX = "mietkomplex";
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name=BaseEntity.MAP_ID)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+        CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name="MIETKOMPLEX_MIETOBJEKT")
     private Mietkomplex mietkomplex;
     
     public static final String MAP_ANSPRECHPARTNER = "ansprechpartner";
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
         CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) 
-    @JoinColumn(name=BaseEntity.MAP_ID)
+    @JoinColumn(name="ANSPRECHPARTNER_MIETOBJEKT")
     private Ansprechpartner ansprechpartner;
     
     //TODO: SOLLEN ZAHLUNGEN MIT MIETOBJEKTEN GELÖSCHT WERDEN? DERZEIT: JA
-    public static final String MAP_NEBENKOSTENJAHR= "nebenkostenJahr";
+    public static final String MAP_NEBENKOSTENJAHR= "nebenkostenjahr";
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
         CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) 
-    @JoinColumn(name=BaseEntity.MAP_ID)  
-    private NebenkostenJahr nebenkostenJahr;
+    @JoinColumn(name="NEBENKOSTENJAHR_MIETOBJEKT")
+    private NebenkostenJahr nebenkostenjahr;
     
-    public static final String MAP_ZAHLUNG = "nebenkostenJahr";
+    public static final String MAP_ZAHLUNG = "zahlung";
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
         CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name=BaseEntity.MAP_ID)
+    @JoinColumn(name="ZAHLUNG_MIETOBJEKT")
     private Zahlung zahlung;
     
     public Mietobjekt() {
@@ -234,12 +235,12 @@ public class Mietobjekt extends BaseEntity {
         ansprechpartner = aAnsprechpartner;
     }
     
-    public NebenkostenJahr getNebenkostenJahr() {
-        return nebenkostenJahr;
+    public NebenkostenJahr getNebenkostenjahr() {
+        return nebenkostenjahr;
     }
     
-    public void setNebenkostenJahr(NebenkostenJahr aNebenkostenJahr) {
-    	nebenkostenJahr = aNebenkostenJahr;
+    public void setNebenkostenjahr(NebenkostenJahr aNebenkostenjahr) {
+    	nebenkostenjahr = aNebenkostenjahr;
     }
     
     public Zahlung getZahlung() {

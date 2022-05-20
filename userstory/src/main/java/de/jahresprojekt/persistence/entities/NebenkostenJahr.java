@@ -50,8 +50,8 @@ public class NebenkostenJahr extends BaseEntity{
     private boolean istBezahlt;
    
     @OneToMany(mappedBy = Mietobjekt.MAP_NEBENKOSTENJAHR,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                CascadeType.REFRESH, CascadeType.DETACH})
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.REFRESH, CascadeType.DETACH})
     private List<Mietobjekt> mietobjekte = new ArrayList<>();
     
     public NebenkostenJahr() {
@@ -117,10 +117,14 @@ public class NebenkostenJahr extends BaseEntity{
     public List<Mietobjekt> getMietobjekte() {
         return mietobjekte;
     }
+
+    public void setMietobjekte(List<Mietobjekt> mietobjekte) {
+        this.mietobjekte = mietobjekte;
+    }
     
     public void addMietobjekt(Mietobjekt aMietobjekt) {
         mietobjekte.add(aMietobjekt);
-        aMietobjekt.setNebenkostenJahr(this);
+        aMietobjekt.setNebenkostenjahr(this);
     }
     
   
