@@ -10,8 +10,6 @@ import de.jahresprojekt.logic.util.StringUtils;
 import de.jahresprojekt.persistence.service.NutzerRepository;
 import de.jahresprojekt.persistence.entities.Nutzer;
 import java.io.Serializable;
-import javax.annotation.ManagedBean;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -30,26 +28,28 @@ public class LoginService implements Serializable {
     
     protected int nummer;
     
-    protected String hubert = "Hanswurst";
-    protected String username = "";
+    protected String passwort = "pW";
+    protected String username;
     
     // Getter Setter
 
     public void setNummer(int nummer) {
-        System.out.println("##############set###################");
+        System.out.println("\n############## set Nummer ###################\n");
         this.nummer = nummer;
     }
 
     public int getNummer() {
-        System.out.println("##############get##########################");
+        System.out.println("\n############## get Nummer ###################\n");
         return nummer;
     }
 
     public Daten getDaten() {
+        System.out.println("\n\n======== Get Daten ========\n\n");
         return daten;
     }
 
     public void setDaten(Daten daten) {
+        System.out.println("\n\n======== Set Daten ========\n\n");
         this.daten = daten;
     }
     
@@ -65,28 +65,21 @@ public class LoginService implements Serializable {
         this.activeUser = activeUser;
     }
 
-    public String getHubert() {
-        return hubert;
+    public String getPasswort() {
+         System.out.println("\n\n+++++++++ Get Passwort +++++++++n\n");
+        return passwort;
     }
 
-    public void setHubert(String hubert) {
-        System.out.println("");
-        System.out.println("");
-        System.out.println(hubert);
-        System.out.println("");
-        System.out.println("");
-        this.hubert = hubert;
+    public void setPasswort(String passwort) {
+        System.out.println("\n\n+++++++++ Set Passwort +++++++++\n\n");
+        this.passwort = passwort;
     }
 
     public void setUsername(String username) {
-        System.out.println(username);
         this.username = username;
     }
 
     public String getUsername() {
-        
-        System.out.println("\n\n\nHALLO WELT\n\n\n");
-        
         return username;
     }
     
@@ -99,14 +92,16 @@ public class LoginService implements Serializable {
     
     
     public boolean doLogin() {
+        System.out.println("\n\n <<<<<<< Methode doLogin >>>>>>>>");
+        System.out.println("Username: " + username + " Passwort: " + passwort + "\n\n");
         if (StringUtils.isEmpty(username) ||
-            StringUtils.isEmpty(hubert)) {
+            StringUtils.isEmpty(passwort)) {
                 System.out.println("\n\nFELDER LEER\n\n");
                 return false;
         }
         
         this.activeUser = getNutzerRep()
-            .getNutzerByLogin(username, HashUtils.getHash(hubert))
+            .getNutzerByLogin(username, HashUtils.getHash(passwort))
             .orElse(null);
         
         System.out.println("Nutzer gefunden: " + activeUser.getName());
@@ -124,7 +119,7 @@ public class LoginService implements Serializable {
         String nutzerPasswortDaten;
 
         public String getNutzerNameDaten() {
-            System.out.println("\n\n\n" + nutzerNameDaten + "HIER WERT \n\n\n");
+            System.out.println("\n\n\n" + nutzerNameDaten + " get Nutzernamdaten \n\n\n");
             return nutzerNameDaten;
         }
 
@@ -133,7 +128,7 @@ public class LoginService implements Serializable {
         }
 
         public void setNutzerNameDaten(String nutzerNameDaten) {
-            System.out.println("\n\n\n HABE BEKOMMEN " + nutzerNameDaten + "\n\n\n");
+            System.out.println("\n\n\n Set NutzernameDaten BEKOMMEN " + nutzerNameDaten + "\n\n\n");
             this.nutzerNameDaten = nutzerNameDaten;
         }
 

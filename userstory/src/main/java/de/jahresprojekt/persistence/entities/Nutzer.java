@@ -10,7 +10,7 @@ package de.jahresprojekt.persistence.entities;
  * @author Lukas Eckert
  * @author Simon Stabbert
  */
-import de.jahresprojekt.persistence.entities.base.BasePojo;
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +26,7 @@ import javax.persistence.Column;
 
 @Entity
 @Table(name = Nutzer.TABLE_NAME)
-public class Nutzer extends BasePojo {
+public class Nutzer extends BaseEntity {
     
     // Den Namen der Tabelle hier immer statisch deklarieren,
     // die brauchen wir technisch aktuell.

@@ -3,10 +3,12 @@ de\jahresprojekt\logic\service\LogikBean.class
 de\jahresprojekt\logic\service\MieterManager.class
 de\jahresprojekt\logic\service\Login.class
 de\jahresprojekt\tutorial\GenericBean.class
+de\jahresprojekt\persistence\entities\base\BaseEntity.class
 de\jahresprojekt\persistence\entities\Nutzer.class
 de\jahresprojekt\tutorial\view\Product.class
 de\jahresprojekt\logic\service\immobilienManager.class
 de\jahresprojekt\logic\service\LoginService.class
+de\jahresprojekt\persistence\entities\base\IEntity.class
 de\jahresprojekt\persistence\service\base\IRepository.class
 de\jahresprojekt\persistence\utils\HibernateUtils.class
 de\jahresprojekt\logic\service\Zahlung.class
@@ -21,8 +23,6 @@ de\jahresprojekt\logic\service\CurrUser.class
 de\jahresprojekt\logic\util\HashUtils.class
 de\jahresprojekt\persistence\entities\Ort.class
 de\jahresprojekt\logic\util\StringUtils.class
-de\jahresprojekt\persistence\entities\base\IPojo.class
-de\jahresprojekt\persistence\entities\base\BasePojo.class
 de\jahresprojekt\logic\service\Mieter.class
 de\jahresprojekt\tutorial\view\InventoryStatus.class
 de\jahresprojekt\persistence\service\BaseRepository.class

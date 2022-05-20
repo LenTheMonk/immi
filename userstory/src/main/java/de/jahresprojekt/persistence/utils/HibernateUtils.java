@@ -12,7 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
 /**
- *
+ * Utilities für Hibernate.
  * @author Lukas
  */
 public abstract class HibernateUtils {
@@ -22,6 +22,10 @@ public abstract class HibernateUtils {
     private static Session openSession = null;
     private static EntityManager openManager = null;
     
+    /**
+     * Liefert das SessionFactory Singleton.
+     * @return SessionFactory
+     */
     public static SessionFactory getFactorySingleton() {
         return HibernateUtils.factorySingleton;
     }

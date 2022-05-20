@@ -8,10 +8,10 @@ package de.jahresprojekt.persistence.entities.base;
 import java.io.Serializable;
 
 /**
- * Interface für Pojos.
+ * Interface für Entities.
  * @author Lukas Eckert
  */
-public interface IPojo extends Serializable {
+public interface IEntity extends Serializable {
     
     /**
      * Liefert den Namen der Datenbanktabelle des POJO.

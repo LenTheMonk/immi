@@ -5,7 +5,7 @@
  */
 package de.jahresprojekt.persistence.entities;
 
-import de.jahresprojekt.persistence.entities.base.BasePojo;
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,7 +21,7 @@ import javax.persistence.UniqueConstraint;
 // Über die uniqueConstraints können zusammengesetzte uniques definiert werden
 @Table(name = Ort.TABLE_NAME, uniqueConstraints =
         { @UniqueConstraint(columnNames = { "name", "plz" }) })
-public class Ort extends BasePojo {
+public class Ort extends BaseEntity {
     
     // Den Namen der Tabelle hier immer statisch deklarieren,
     // die brauchen wir technisch aktuell.

@@ -17,8 +17,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
- *
-* @author Lukas Eckert
+ * Testklasse
+ * @author Lukas Eckert
  */
 public class SteuerungTest {
     
