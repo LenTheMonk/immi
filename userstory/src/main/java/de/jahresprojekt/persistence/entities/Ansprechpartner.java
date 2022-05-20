@@ -26,31 +26,35 @@ import javax.persistence.Column;
 @Table(name = Ansprechpartner.TABLE_NAME)
 public class Ansprechpartner extends BaseEntity{
     
-    // Den Namen der Tabelle hier immer statisch deklarieren,
-    // die brauchen wir technisch aktuell.
     public static final String TABLE_NAME = "ANSPRECHPARTNER";
 	
     @Id
     @GeneratedValue
     private long id;
     
-    @Column(nullable = false)
+    public static final String MAP_VORNAME = "vorname";
+    @Column(nullable = false, name = Ansprechpartner.MAP_VORNAME)
     private String vorname;
     
-    @Column(nullable = false)
+    public static final String MAP_NAME = "name";
+    @Column(nullable = false, name = Ansprechpartner.MAP_NAME)
     private String name;
     
-    @Column(nullable = false)
+    public static final String MAP_EMAIL = "email";
+    @Column(nullable = false, name = Ansprechpartner.MAP_EMAIL)
     private String email;
     
-    @Column(nullable = false)
+    public static final String MAP_FESTNETZ= "festnetz";
+    @Column(nullable = false, name = Ansprechpartner.MAP_FESTNETZ) 
     private String festnetz;
-       
-    @Column(nullable = false)
+     
+    public static final String MAP_MOBIL = "mobil";
+    @Column(nullable = false, name = Ansprechpartner.MAP_MOBIL)
     private String mobil;
     
+    
     @OneToMany(mappedBy = Mietobjekt.MAP_ANSPRECHPARTNER,
-        cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Mietobjekt> mietobjekte = new ArrayList<>();
     
     public Ansprechpartner() {

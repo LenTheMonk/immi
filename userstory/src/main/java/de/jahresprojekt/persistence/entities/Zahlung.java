@@ -5,88 +5,101 @@
  */
 package de.jahresprojekt.persistence.entities;
 
-import de.jahresprojekt.persistence.entities.base.BaseEntity;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 
  * @author Lukas Eckert
  * @author Simon Stabbert
  */
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
+import java.sql.Timestamp;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
 
 @Entity
-@Table(name = "ZAHLUNG")
+@Table(name = NebenkostenJahr.TABLE_NAME)
 public class Zahlung extends BaseEntity{
 	
+	public static final String TABLE_NAME = "ZAHLUNG";
+	 
     @Id
     @GeneratedValue
     @Column(name = "ZAHLUNG_ID")
     private long id;
     
-    @Column(nullable = false)
+    public static final String MAP_BEZEICHNUNG = "bezeichnung";
+    @Column(nullable = false, name = Zahlung.MAP_BEZEICHNUNG)
     private String bezeichnung;
     
-    @Column(nullable = false)
+    public static final String MAP_BETRAG = "betrag";
+    @Column(nullable = false, name = Zahlung.MAP_BETRAG)
     private double betrag;
     
-    @Column(nullable = false)
+    public static final String MAP_DATUM = "datum";
+    @Column(nullable = false, name = Zahlung.MAP_DATUM)
     private Timestamp datum;
     
-	@Column(nullable = false)
+    @Column(nullable = false)
     private String iban;
     
-    @Column(nullable = false)
+    public static final String MAP_BIC = "bic";
+    @Column(nullable = false, name = Zahlung.MAP_BIC)
     private String bic;
     
-    @Column(nullable = false)
-    private String Kontoinhaber;
+    public static final String MAP_KONTOINHABER = "kontoinhaber";
+    @Column(nullable = false, name = Zahlung.MAP_KONTOINHABER)
+    private String kontoinhaber;
     
-    @Column(nullable = false)
-    private String Kreditinstitut;
+    public static final String MAP_KREDITINSTITUT = "Kreditinstitut";
+    @Column(nullable = false, name = Zahlung.MAP_KREDITINSTITUT)
+    private String kreditinstitut;
     
-    @OneToMany(mappedBy = "zahlung", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = Mietobjekt.MAP_ZAHLUNG,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Mietobjekt> mietobjekte = new ArrayList<>();
     
     public Zahlung() {
     }
     
     public Zahlung(String aBezeichnung, double aBetrag, Timestamp aDatum, String aIban,  String aBic, 
-    	    String aKontoinhaber, aKreditinstitut) {
+    	    String aKontoinhaber,String aKreditinstitut) {
     	    	bezeichnung = aBezeichnung;
     	    	betrag = aBetrag;
     	    	datum = aDatum;
     	       	iban = aIban;
     	        bic = aBic;
     	        kontoinhaber = aKontoinhaber;
-    	        kreditinstitut = aKreditinstiut;
+    	        kreditinstitut = aKreditinstitut;
     	    }
       
+    @Override
+    public String getTableName() {
+        return Zahlung.TABLE_NAME;
+    }
+    
+    // Getter Setter
+    
     @Override
     public long getId() {
         return id;
     }
     
     @Override
-    public long setId(aId) {
-    	id = aId; 
+    public void setId(long aId) {
+        id = aId; 
     }
     
     public String getBezeichnung() {
         return bezeichnung;
     }
      
-    public String setBezeichnung(aBezeichnung) {
+    public void setBezeichnung(String aBezeichnung) {
     	bezeichnung = aBezeichnung; 
     }
     
@@ -94,7 +107,7 @@ public class Zahlung extends BaseEntity{
         return betrag;
     }
     
-    public double setBetrag(aBetrag) {
+    public void setBetrag(double aBetrag) {
     	betrag = aBetrag; 
     }
     
@@ -102,7 +115,7 @@ public class Zahlung extends BaseEntity{
         return datum;
     }
     
-    public Timestamp setDatum(aDatum) {
+    public void setDatum(Timestamp aDatum) {
     	datum = aDatum; 
     }
     
@@ -143,7 +156,7 @@ public class Zahlung extends BaseEntity{
     
     public void addMietobjekt(Mietobjekt aMietobjekt) {
         mietobjekte.add(aMietobjekt);
-        mietobjekte.setZahlung(this);
+        aMietobjekt.setZahlung(this);
     }
     
   

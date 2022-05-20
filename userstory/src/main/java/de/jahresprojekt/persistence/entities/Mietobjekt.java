@@ -5,89 +5,108 @@
  */
 package de.jahresprojekt.persistence.entities;
 
-import de.jahresprojekt.persistence.entities.base.BaseEntity;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-
 /**
  * 
  * @author Lukas Eckert
  * @author Simon Stabbert
  */
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
+import java.sql.Timestamp;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-
 
 @Entity
-@Table(name = "MIETOBJEKT")
+@Table(name = Mietobjekt.TABLE_NAME)
 public class Mietobjekt extends BaseEntity {
+	
+    public static final String TABLE_NAME = "MIETOBJEKT";
 	
     @Id
     @GeneratedValue
     private long id;
     
-    @Column(nullable = false)
+    public static final String MAP_BEZEICHNUNG = "bezeichnung";
+    @Column(nullable = false, name = Mietobjekt.MAP_BEZEICHNUNG)
     private String bezeichnung;
     
-    @Column(nullable = false)
+    public static final String MAP_STRASSE = "strasse";
+    @Column(nullable = false, name = Mietobjekt.MAP_STRASSE)
     private String strasse;
-    
-    @Column(nullable = false)
+     
+    public static final String MAP_PLZ = "plz";
+    @Column(nullable = false, name = Mietobjekt.MAP_PLZ)
     private String plz;
     
-    @Column(nullable = false)
+    public static final String MAP_ORT= "ort";
+    @Column(nullable = false, name = Mietobjekt.MAP_ORT)
     private String ort;
     
-    @Column(nullable = false)
+    public static final String MAP_QM = "qm";
+    @Column(nullable = false, name = Mietobjekt.MAP_QM)
     private Integer qm; 
     
-    @Column(nullable = false)
+    public static final String MAP_QMPREISKALT = "qmpreiskalt";
+    @Column(nullable = false, name = Mietobjekt.MAP_QMPREISKALT)
     private Double qmpreiskalt;
     
-    @Column(nullable = false)
+    public static final String MAP_NEBENKOSTEN = "nebenkosten";
+    @Column(nullable = false, name = Mietobjekt.MAP_NEBENKOSTEN)
     private Double nebenkosten;
     
-    @Column(nullable = false)
+    public static final String MAP_ISTGEWERBLICH = "istGewerblich";
+    @Column(nullable = false, name = Mietobjekt.MAP_ISTGEWERBLICH)
     private boolean istGewerblich;
     
-    @Column(nullable = false)
+    public static final String MAP_ISTVERMIETET = "istVermietet";
+    @Column(nullable = false, name = Mietobjekt.MAP_ISTVERMIETET)
     private boolean istVermietet;
     
-    @Column(nullable = true)
+    public static final String MAP_MIETBEGINN = "mietbeginn";
+    @Column(nullable = false, name = Mietobjekt.MAP_MIETBEGINN)
     private Timestamp mietbeginn;
     
-    @Column(nullable = true)
+    public static final String MAP_MIETENDE = "mietende";
+    @Column(nullable = false, name = Mietobjekt.MAP_MIETENDE)
     private Timestamp mietende;
     
-    @ManyToOne
-    @JoinColumn(name="MIETER_ID")
+    public static final String MAP_MIETER = "mieter";
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+        CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) 
+    @JoinColumn(name=BaseEntity.MAP_ID)
     private Mieter mieter;
     
-    @ManyToOne
-    @JoinColumn(name="MIETKOMPLEX_ID")
+    //TODO: WIRD HIER DURCH DETACH DER MIETKOMPLEX GELÖSCHT?
+    public static final String MAP_MIETKOMPLEX = "mietkomplex";
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name=BaseEntity.MAP_ID)
     private Mietkomplex mietkomplex;
     
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name=BaseEntity.MAP_ID)
     public static final String MAP_ANSPRECHPARTNER = "ansprechpartner";
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+        CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) 
+    @JoinColumn(name=BaseEntity.MAP_ID)
     private Ansprechpartner ansprechpartner;
     
-    @ManyToOne
-    @JoinColumn(name="NEBENKOSTENJAHR_ID")
+    //TODO: SOLLEN ZAHLUNGEN MIT MIETOBJEKTEN GELÖSCHT WERDEN? DERZEIT: JA
+    public static final String MAP_NEBENKOSTENJAHR= "nebenkostenJahr";
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+        CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) 
+    @JoinColumn(name=BaseEntity.MAP_ID)  
     private NebenkostenJahr nebenkostenJahr;
     
-    @ManyToOne
-    @JoinColumn(name="ZAHLUNGEN_ID")
+    public static final String MAP_ZAHLUNG = "nebenkostenJahr";
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+        CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name=BaseEntity.MAP_ID)
     private Zahlung zahlung;
     
     public Mietobjekt() {
@@ -111,20 +130,27 @@ public class Mietobjekt extends BaseEntity {
     }
 
     @Override
+    public String getTableName() {
+        return Ansprechpartner.TABLE_NAME;
+    }
+    
+    // Getter Setter
+    
+    @Override
     public long getId() {
         return id;
     }
     
     @Override
     public void setId(long aId) {
-    	id = aId; 
+        id = aId; 
     }
     
     public String getBezeichnung() {
         return bezeichnung;
     }
      
-    public String setBezeichnung(String aBezeichnung) {
+    public void setBezeichnung(String aBezeichnung) {
     	bezeichnung = aBezeichnung; 
     }
     
@@ -132,7 +158,7 @@ public class Mietobjekt extends BaseEntity {
         return qm;
     }
     
-    public Integer setQm(Integer aQm) {
+    public void setQm(Integer aQm) {
     	qm = aQm; 
     }  
     
@@ -172,7 +198,7 @@ public class Mietobjekt extends BaseEntity {
         return mietbeginn;
     }
     
-    public Timestamp setMietbeginn(Timestamp aMietbeginn) {
+    public void setMietbeginn(Timestamp aMietbeginn) {
     	mietbeginn = aMietbeginn; 
     }
     
@@ -180,7 +206,7 @@ public class Mietobjekt extends BaseEntity {
         return mietende;
     }
     
-    public Timestamp setMietende(Timestamp aMietende) {
+    public void setMietende(Timestamp aMietende) {
     	mietende = aMietende; 
     }
     

@@ -5,46 +5,54 @@
  */
 package de.jahresprojekt.persistence.entities;
 
-import de.jahresprojekt.persistence.entities.base.BaseEntity;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 
  * @author Lukas Eckert
  * @author Simon Stabbert
  */
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity
-@Table(name = "MIETKOMPLEX")
+@Table(name = Mietkomplex.TABLE_NAME)
 public class Mietkomplex extends BaseEntity{
 	
+	public static final String TABLE_NAME = "MIETKOMPLEX";
+	 
     @Id
     @GeneratedValue
-    @Column(name="MIETKOMPLEX_ID")
     private long id;
         
-    @OneToMany(mappedBy = "mietkomplex", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mietkomplex",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Mietobjekt> mietobjekte = new ArrayList<>();
- 
-    @ManyToOne
-    @JoinColumn(name="MIETER_ID")
-    private Mieter mieter;
     
+    public static final String MAP_MIETER = "mieter";
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+        CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name=BaseEntity.MAP_ID)
+    private Mieter mieter;
     
     public Mietkomplex() {
     }
+    
+    @Override
+    public String getTableName() {
+        return Mietkomplex.TABLE_NAME;
+    }
+    
+    // Getter Setter
     
     @Override
     public long getId() {
@@ -52,13 +60,13 @@ public class Mietkomplex extends BaseEntity{
     }
     
     @Override
-    public long setId(aId) {
-    	id = aId; 
+    public void setId(long aId) {
+        id = aId; 
     }
     
-    public void setMietkomplexId(Integer aMietkomplexId) {
-    	mietkomplexId = aMietkomplexId;
-    }
+//    public void setMietkomplexId(Integer aMietkomplexId) {
+//    	mietkomplexId = aMietkomplexId;
+//    }
     
     public List<Mietobjekt> getMietobjekt() {
         return mietobjekte;
@@ -66,15 +74,15 @@ public class Mietkomplex extends BaseEntity{
     
     public void addMietobjekt(Mietobjekt aMietobjekt) {
         mietobjekte.add(aMietobjekt);
-        mietobjekte.setMieter(mieter);
+        aMietobjekt.setMietkomplex(this);
     }
     
     public Mieter getMieter() {
-    return mieter;
-	}
+        return mieter;
+    }
 
-	public void setMieter(Mieter aMieter) {
-    mieter = aMieter;
-	}
+    public void setMieter(Mieter aMieter) {
+        mieter = aMieter;
+    }
     
 }

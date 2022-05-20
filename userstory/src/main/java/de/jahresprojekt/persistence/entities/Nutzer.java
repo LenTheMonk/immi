@@ -15,28 +15,24 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 
-
 @Entity
 @Table(name = Nutzer.TABLE_NAME)
 public class Nutzer extends BaseEntity {
     
-    // Den Namen der Tabelle hier immer statisch deklarieren,
-    // die brauchen wir technisch aktuell.
+
     public static final String TABLE_NAME = "NUTZER";
     
     @Id
     @GeneratedValue
     private long id;
     
-    public static final String MAP_NUTZERNAME = "nutzername";
+    public static final String MAP_NUTZERNAME = "nutzername";  
     @Column(nullable = false, name = Nutzer.MAP_NUTZERNAME)
     private String nutzername;
     
@@ -44,22 +40,28 @@ public class Nutzer extends BaseEntity {
     @Column(nullable = false, name = Nutzer.MAP_PASSWORT)
     private String passwort;
     
-    @Column(nullable = false)
+    public static final String MAP_ISTADMINISTRATOR = "istAdminstrator";
+    @Column(nullable = false, name = Nutzer.MAP_ISTADMINISTRATOR)
     private boolean istAdministrator;
-      
-    @Column(nullable = false)
+     
+    public static final String MAP_VORNAME = "vorname";
+    @Column(nullable = false, name = Nutzer.MAP_VORNAME)
     private String vorname;
     
-    @Column(nullable = false)
+    public static final String MAP_NAME = "name";
+    @Column(nullable = false, name = Nutzer.MAP_NAME)
     private String name;
     
-    @Column(nullable = false)
+    public static final String MAP_EMAIL = "email";
+    @Column(nullable = false, name = Nutzer.MAP_EMAIL)
     private String email;
     
-    @Column(nullable = false)
+    public static final String MAP_FESTNETZ = "festnetz";
+    @Column(nullable = false) 
     private String festnetz;
-       
-    @Column(nullable = false)
+     
+    public static final String MAP_MOBIL = "mobil";
+    @Column(nullable = false, name = Nutzer.MAP_MOBIL)
     private String mobil;
     
     public Nutzer() {

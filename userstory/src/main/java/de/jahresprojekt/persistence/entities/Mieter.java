@@ -5,100 +5,117 @@
  */
 package de.jahresprojekt.persistence.entities;
 
-import de.jahresprojekt.persistence.entities.base.BaseEntity;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 
  * @author Lukas Eckert
  * @author Simon Stabbert
  */
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.persistence.Column;
 
 @Entity
-@Table(name = "MIETER")
+@Table(name = Mieter.TABLE_NAME)
 public class Mieter extends BaseEntity{
 	
+    public static final String TABLE_NAME = "MIETER";
+    
     @Id
     @GeneratedValue
-    @Column(name="MIETER_ID")
     private long id;
     
-    @Column(nullable = false)
+    public static final String MAP_ANREDE = "anrede";
+    @Column(nullable = false, name = Mieter.MAP_ANREDE)
     private String anrede;
     
-    @Column(nullable = false)
+    public static final String MAP_VORNAME = "vorname";
+    @Column(nullable = false, name = Mieter.MAP_VORNAME)
     private String vorname;
     
-    @Column(nullable = false)
+    public static final String MAP_NAME = "name";
+    @Column(nullable = false, name = Mieter.MAP_NAME)
     private String name;
     
-    @Column(nullable = false)
+    public static final String MAP_STRASSEALT = "strasseAlt";
+    @Column(nullable = false, name = Mieter.MAP_STRASSEALT)
     private String strasseAlt;
     
-    @Column(nullable = false)
+    public static final String MAP_PLZALT = "plzAlt";
+    @Column(nullable = false, name = Mieter.MAP_PLZALT)
     private String plzAlt;
     
-    @Column(nullable = false)
+    public static final String MAP_ORTALT= "ortAlt";
+    @Column(nullable = false, name = Mieter.MAP_ORTALT)
     private String ortAlt;
     
-    @Column(nullable = false)
+    public static final String MAP_EMAIL = "email";
+    @Column(nullable = false, name = Mieter.MAP_EMAIL)
     private String email;
     
-    @Column(nullable = false)
+    public static final String MAP_FESTNETZ= "festnetz";
+    @Column(nullable = false, name = Mieter.MAP_FESTNETZ) 
     private String festnetz;
-       
-    @Column(nullable = false)
+     
+    public static final String MAP_MOBIL = "mobil";
+    @Column(nullable = false, name = Mieter.MAP_MOBIL)
     private String mobil;
     
-	@Column(nullable = false)
+    public static final String MAP_IBAN = "iban";
+    @Column(nullable = false, name = Mieter.MAP_IBAN)
     private String iban;
     
-    @Column(nullable = false)
+    public static final String MAP_BIC = "bic";
+    @Column(nullable = false, name = Mieter.MAP_BIC)
     private String bic;
     
-    @Column(nullable = false)
-    private String Kontoinhaber;
+    public static final String MAP_KONTOINHABER = "kontoinhaber";
+    @Column(nullable = false, name = Mieter.MAP_KONTOINHABER)
+    private String kontoinhaber;
     
-    @Column(nullable = false)
-    private String Kreditinstitut;
+    public static final String MAP_KREDITINSTITUT = "Kreditinstitut";
+    @Column(nullable = false, name = Mieter.MAP_KREDITINSTITUT)
+    private String kreditinstitut;
    
     
-    @OneToMany(mappedBy = "mieter", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = Mietobjekt.MAP_MIETER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Mietobjekt> mietobjekte = new ArrayList<>();
     
-    @OneToMany(mappedBy = "mieter", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = Mietkomplex.MAP_MIETER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Mietkomplex> mietkomplexe = new ArrayList<>();
     
     public Mieter() {
     }
     
     public Mieter(String aAnrede, String aVorname, String aName, String aStrasseAlt, String aPlzAlt,
-    String aOrtAlt, String aFestnetz, String aMobil, String aIban,  String aBic, 
-    String aKontoinhaber, aKreditinstitut) {
+    String aOrtAlt, String aEmail, String aFestnetz, String aMobil, String aIban,  String aBic, 
+    String aKontoinhaber, String aKreditinstitut) {
     	anrede = aAnrede;
-        vorname = aVorame;
+        vorname = aVorname;
         name = aName;
         strasseAlt = aStrasseAlt;
         plzAlt = aPlzAlt;
         ortAlt = aOrtAlt;
+        email = aEmail;
         festnetz = aFestnetz;
        	iban = aIban;
         bic = aBic;
         kontoinhaber = aKontoinhaber;
-        kreditinstitut = aKreditinstiut;
+        kreditinstitut = aKreditinstitut;
     }
+    
+    @Override
+    public String getTableName() {
+        return Mieter.TABLE_NAME;
+    }
+    
+    // Getter Setter
     
     @Override
     public long getId() {
@@ -106,8 +123,8 @@ public class Mieter extends BaseEntity{
     }
     
     @Override
-    public long setId(aId) {
-    	id = aId; 
+    public void setId(long aId) {
+        id = aId; 
     }
     
     public String getAnrede() {
@@ -170,11 +187,11 @@ public class Mieter extends BaseEntity{
         return festnetz;
     }
     
-    public void setFestnetz(String afestnetz) {
+    public void setFestnetz(String aFestnetz) {
        festnetz = aFestnetz;
     }
     
-    public void getMobil() {
+    public String getMobil() {
        return mobil;
     }
     
@@ -219,7 +236,7 @@ public class Mieter extends BaseEntity{
     
     public void addMietobjekt(Mietobjekt aMietobjekt) {
         mietobjekte.add(aMietobjekt);
-        mietobjekte.setMieter(this);
+        aMietobjekt.setMieter(this);
     }
     
     public List<Mietkomplex> getMietkomplexe() {
@@ -228,6 +245,6 @@ public class Mieter extends BaseEntity{
     
     public void addMietkomplex(Mietkomplex aMietkomplex) {
         mietkomplexe.add(aMietkomplex);
-        mietkomplexe.setMieter(this);
+        aMietkomplex.setMieter(this);
     }
 }
