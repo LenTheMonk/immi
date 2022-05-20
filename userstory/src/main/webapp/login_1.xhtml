@@ -30,11 +30,8 @@
                          border-bottom: 1px solid #fff;padding-top: 10px; background: transparent ;color: #fff" type="password" placeholder="Kentwort" />
                     </div>
                    
-                     <input style="margin: 45px; border: 1px solid #fff; width: 80%; padding: 10px ; 
-                          background: transparent; color: #fff; font-size: 20px" type="button" value="#{user.pruefen}"
-                          onclick="window.location.href = 'http://localhost:8080/userstory/startSeite.xhtml';" value="Los Geht!"/>
-                    
-              
+                    <h:commandButton style="margin: 45px; border: 1px solid #fff; width: 80%; padding: 10px ; 
+                          background: transparent; color: #fff; font-size: 20px" action="#{user.pruefen}"  onclick="window.location.href = 'http://localhost:8080/userstory/startSeite.xhtml';" value="Los Geht!" ></h:commandButton>
                 </form>
             </div>        
         </body>

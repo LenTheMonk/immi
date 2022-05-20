@@ -6,7 +6,7 @@
 package de.jahresprojekt.logic.service;
 
 
-import java.beans.Statement;
+
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 
@@ -31,47 +33,27 @@ public class user {
     String email;
     String password;
     
-     //hier die verknupfung mit SQL und DB_URL
-    static final String JDBC_Driver= "";//muss JDBC_Driver eingeben
-    static final String DB_URL="";//muss DB_URL eingeben
-    
-     //database email und password
-    static final String Email="trhrth";//muss eingeben
-    static final String pass="hrthrt";//muss eingeben
-    
-    public user(){
-    }
-    
     public String pruefen(){
-       Connection conn = null;
-       Statement s = null;
-        ResultSet rs = null;
+                
        boolean pruefung = false;
+        String connectionUrl = null;//connectionUrl muss eingeben
         
-       try {
-           
-     //Regestrieren SQL Driver
-           Class.forName("");//com.mysql.jdbc.Driver ZB muss eingeben
-           
-           //Connection öffnen
-          
-           conn = DriverManager.getConnection( DB_URL,Email,pass);
-           
-           //Abfrage ausführen
-           s =  (Statement) conn.createStatement();
-           
-//           rs = s.executeQuery("select name from person");
+       try (Connection conn = DriverManager.getConnection(connectionUrl);
+          Statement  s = conn.createStatement();)
+        {
+             String sql="";//SQL abfrage
+        ResultSet rs = s.executeQuery(sql);
            //result
-               if(rs.next())
-                   pruefung = true;
-          
-       } catch (Exception se)
+               while(rs.next())
+                   pruefung = true;         
+       } 
+       catch (Exception se)
        {
-            return "";
+            return "falsh";
                     }
             
         if(pruefung)
-            return "";
+            return "startSeite.xhtml";
         else 
         return null;
    }
