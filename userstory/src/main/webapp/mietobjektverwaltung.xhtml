@@ -33,21 +33,58 @@ import de.deuka.eckert.userstory.immi.view.SortView; -->
                 <p>hahdahdawdawdad</p>
                 <p>hahahaha</p>
             </div>
-            <h:form>
+            <h:form id="tolleForm">
                 <div class="card">
                     <h3>Mietobjekte</h3>
-                    <p:dataTable var="product" value="#{dtSortView.products1}" allowUnsorting="true" sortMode="single">
+                    <p:dataTable id="productsTable" var="product" value="#{dtSortView.products1}"
+                                 editable="true" allowUnsorting="true" sortMode="single" >
+                        
+                        <p:ajax event="rowEdit" listener="#{dtSortView.onRowEdit}"/>
+                        <p:ajax event="rowEditCancel" listener="#{dtSortView.onRowCancel}"/>
+                        
                         <p:column sortBy="#{product.code}" headerText="Code">
-                            <h:outputText value="#{product.code}"/>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{product.code}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{product.code}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
                         </p:column>
                         <p:column sortBy="#{product.name}" headerText="Name" sortOrder="asc">
-                            <h:outputText value="#{product.name}"/>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{product.name}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{product.name}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
                         </p:column>
                         <p:column sortBy="#{product.category}" headerText="Category">
-                            <h:outputText value="#{product.category}"/>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{product.category}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{product.category}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
                         </p:column>
                         <p:column sortBy="#{product.quantity}" headerText="Quantity">
-                            <h:outputText value="#{product.quantity}"/>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{product.quantity}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{product.quantity}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        
+                        <p:column style="width:6rem">
+                            <p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
                         </p:column>
                     </p:dataTable>
                 </div>
