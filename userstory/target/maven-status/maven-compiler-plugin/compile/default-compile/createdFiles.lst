@@ -17,7 +17,6 @@ de\jahresprojekt\tutorial\view\SortView.class
 de\jahresprojekt\logic\service\Immobilie.class
 de\jahresprojekt\persistence\test\SteuerungTest.class
 de\jahresprojekt\persistence\service\OrtRepository.class
-de\jahresprojekt\logic\service\LoginService$Daten.class
 de\jahresprojekt\persistence\service\NutzerRepository.class
 de\jahresprojekt\logic\service\CurrUser.class
 de\jahresprojekt\logic\util\HashUtils.class

@@ -29,6 +29,7 @@ public abstract class BaseRepository<T extends BaseEntity>
      * Konstruktor.
      */
     public BaseRepository() {
+        System.out.println("Wir sind im Constructor");
         this.manager = HibernateUtils.getCurrentEntityManager();
     }
     

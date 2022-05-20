@@ -10,5 +10,5 @@ package de.jahresprojekt.persistence.entities.base;
  * @author Lukas Eckert
  */
 public abstract class BaseEntity implements IEntity{
-    
+    public static final String MAP_ID = "id";
 }

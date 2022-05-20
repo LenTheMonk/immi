@@ -18,12 +18,10 @@
                         <h1 style="margin-top: 20px;"><i class="layout-menuitem-icon pi pi-fw pi-print"></i>Login</h1>
                     
                         
-                        <p:inputText id="username" value="#{loginService.daten.nutzerNameDaten}" style="width: 100%;"/>
+                        <p:inputText id="username" value="#{loginService.username}" style="width: 100%;"/>
                         <p:inputText id="passwort" value="#{loginService.passwort}" style="width: 100%;"/>
                         
-                        <p:inputNumber id="inputNumber" value="#{loginService.nummer}" />
-                        
-                        <p:commandButton value="loginDurchfuehren" style="width: 120px;" action="#{loginService.doLogin()}" immediate="true" update=":contentForm"/>
+                        <p:commandButton value="loginDurchfuehren" style="width: 120px;" action="#{loginService.doLogin()}" update=":contentForm"/>
 
                     </h:form>   
                      

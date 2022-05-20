@@ -24,39 +24,11 @@ public class LoginService implements Serializable {
     private NutzerRepository nutzerRep;
     private Nutzer activeUser;
     
-    private Daten daten = new Daten();
-    
-    protected int nummer;
-    
-    protected String passwort = "pW";
+    protected String passwort;
     protected String username;
     
     // Getter Setter
 
-    public void setNummer(int nummer) {
-        System.out.println("\n############## set Nummer ###################\n");
-        this.nummer = nummer;
-    }
-
-    public int getNummer() {
-        System.out.println("\n############## get Nummer ###################\n");
-        return nummer;
-    }
-
-    public Daten getDaten() {
-        System.out.println("\n\n======== Get Daten ========\n\n");
-        return daten;
-    }
-
-    public void setDaten(Daten daten) {
-        System.out.println("\n\n======== Set Daten ========\n\n");
-        this.daten = daten;
-    }
-    
-    
-    
-    
-    
     public Nutzer getActiveUser() {
         return activeUser;
     }
@@ -66,12 +38,10 @@ public class LoginService implements Serializable {
     }
 
     public String getPasswort() {
-         System.out.println("\n\n+++++++++ Get Passwort +++++++++n\n");
         return passwort;
     }
 
     public void setPasswort(String passwort) {
-        System.out.println("\n\n+++++++++ Set Passwort +++++++++\n\n");
         this.passwort = passwort;
     }
 
@@ -92,7 +62,6 @@ public class LoginService implements Serializable {
     
     
     public boolean doLogin() {
-        System.out.println("\n\n <<<<<<< Methode doLogin >>>>>>>>");
         System.out.println("Username: " + username + " Passwort: " + passwort + "\n\n");
         if (StringUtils.isEmpty(username) ||
             StringUtils.isEmpty(passwort)) {
@@ -107,35 +76,5 @@ public class LoginService implements Serializable {
         System.out.println("Nutzer gefunden: " + activeUser.getName());
         
         return activeUser != null;
-    }
-    
-    
-    public class Daten {
-
-        public Daten() {
-        }
-        
-        String nutzerNameDaten;
-        String nutzerPasswortDaten;
-
-        public String getNutzerNameDaten() {
-            System.out.println("\n\n\n" + nutzerNameDaten + " get Nutzernamdaten \n\n\n");
-            return nutzerNameDaten;
-        }
-
-        public String getNutzerPasswortDaten() {
-            return nutzerPasswortDaten;
-        }
-
-        public void setNutzerNameDaten(String nutzerNameDaten) {
-            System.out.println("\n\n\n Set NutzernameDaten BEKOMMEN " + nutzerNameDaten + "\n\n\n");
-            this.nutzerNameDaten = nutzerNameDaten;
-        }
-
-        public void setNutzerPasswortDaten(String nutzerPasswortDaten) {
-            this.nutzerPasswortDaten = nutzerPasswortDaten;
-        }
-        
-        
     }
 }

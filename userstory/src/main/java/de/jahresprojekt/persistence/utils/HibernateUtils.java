@@ -22,6 +22,11 @@ public abstract class HibernateUtils {
     private static Session openSession = null;
     private static EntityManager openManager = null;
     
+    private static final String DIR_HIBERNATEUTILS = "\\desktop\\hibernate.cfg.xml";
+
+    private HibernateUtils() {
+    }
+    
     /**
      * Liefert das SessionFactory Singleton.
      * @return SessionFactory
@@ -56,8 +61,13 @@ public abstract class HibernateUtils {
      * @return SessionFactory Singleton
      */
     private static SessionFactory createSingletonInstance() {
-        File cfgFile = new File("src/hibernate.cfg.xml");
+        
+        String userDir = System.getProperty("user.home");
+        userDir = userDir.concat(HibernateUtils.DIR_HIBERNATEUTILS);
+        System.out.println("User : " + userDir);
+        File cfgFile = new File(userDir);
         System.out.println(cfgFile.getAbsolutePath());
+
         return new Configuration()
                 .configure(cfgFile)
                 .buildSessionFactory();
