@@ -9,6 +9,7 @@ import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 /**
@@ -76,7 +77,7 @@ public class Mietobjekt extends BaseEntity {
     @JoinColumn(name="MIETKOMPLEX_ID")
     private Mietkomplex mietkomplex;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name=BaseEntity.MAP_ID)
     public static final String MAP_ANSPRECHPARTNER = "ansprechpartner";
     private Ansprechpartner ansprechpartner;

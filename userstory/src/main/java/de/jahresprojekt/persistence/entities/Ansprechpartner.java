@@ -49,7 +49,8 @@ public class Ansprechpartner extends BaseEntity{
     @Column(nullable = false)
     private String mobil;
     
-    @OneToMany(mappedBy = Mietobjekt.MAP_ANSPRECHPARTNER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = Mietobjekt.MAP_ANSPRECHPARTNER,
+        cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Mietobjekt> mietobjekte = new ArrayList<>();
     
     public Ansprechpartner() {
