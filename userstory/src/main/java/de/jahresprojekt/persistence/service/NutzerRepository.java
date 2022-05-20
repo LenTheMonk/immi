@@ -6,6 +6,7 @@
 package de.jahresprojekt.persistence.service;
 
 import de.jahresprojekt.persistence.entities.Nutzer;
+import de.jahresprojekt.persistence.service.iRepositories.INutzerRepository;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -16,13 +17,15 @@ import javax.persistence.criteria.Root;
  *
  * @author Lukas Eckert
  */
-public class NutzerRepository extends BaseRepository<Nutzer>{
+public class NutzerRepository extends BaseRepository<Nutzer>
+    implements INutzerRepository {
 
     @Override
     Class getManagedClass() {
         return Nutzer.class;
     }
     
+    @Override
     public Optional<Nutzer> getNutzerByLogin(String name, String hashPw) {
         // Builder
         CriteriaBuilder builder = manager.getCriteriaBuilder();

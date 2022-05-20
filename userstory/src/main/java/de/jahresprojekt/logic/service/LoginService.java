@@ -16,6 +16,7 @@ import javax.inject.Named;
 /**
  * Service Klasse für loginRedux.xhtml
  * @author Lukas Eckert
+ * @author Alex
  */
 @Named(value = "loginService") 
 @SessionScoped

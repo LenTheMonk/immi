@@ -13,6 +13,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  *
  * @author Lukas Eckert
+ * @author Alex
  */
 public abstract class HashUtils { 
     

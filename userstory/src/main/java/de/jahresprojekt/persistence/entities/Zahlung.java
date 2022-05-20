@@ -5,6 +5,7 @@
  */
 package de.jahresprojekt.persistence.entities;
 
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ZAHLUNG")
-public class Zahlung {
+public class Zahlung extends BaseEntity{
 	
     @Id
     @GeneratedValue

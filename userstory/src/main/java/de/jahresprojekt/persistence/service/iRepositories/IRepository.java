@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.jahresprojekt.persistence.service.base;
+package de.jahresprojekt.persistence.service.iRepositories;
 
 import java.util.List;
 import java.util.Optional;

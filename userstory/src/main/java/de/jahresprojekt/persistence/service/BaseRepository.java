@@ -6,7 +6,7 @@
 package de.jahresprojekt.persistence.service;
 
 import de.jahresprojekt.persistence.entities.base.BaseEntity;
-import de.jahresprojekt.persistence.service.base.IRepository;
+import de.jahresprojekt.persistence.service.iRepositories.IRepository;
 import de.jahresprojekt.persistence.utils.HibernateUtils;
 import java.util.ArrayList;
 import java.util.List;

@@ -5,6 +5,7 @@
  */
 package de.jahresprojekt.persistence.entities;
 
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "MIETKOMPLEX")
-public class Mietkomplex {
+public class Mietkomplex extends BaseEntity{
 	
     @Id
     @GeneratedValue
