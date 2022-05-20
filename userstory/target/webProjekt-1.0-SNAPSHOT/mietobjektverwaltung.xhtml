@@ -15,10 +15,11 @@ import de.deuka.eckert.userstory.immi.view.SortView; -->
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <head>
+    <h:head>
+        <link rel="stylesheet" media="all" type="text/css" href="css/mietobjektverwaltung.css" />
         <title>Mietobjektverwaltung</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>   
+    </h:head>
     <body>
         <header>
             <a href="/index.xhtml">
@@ -27,9 +28,14 @@ import de.deuka.eckert.userstory.immi.view.SortView; -->
         </header>
         
         <main>
+            
+            <div class="test">
+                <p>hahdahdawdawdad</p>
+                <p>hahahaha</p>
+            </div>
             <h:form>
                 <div class="card">
-                    <h5>Mietobjekte</h5>
+                    <h3>Mietobjekte</h3>
                     <p:dataTable var="product" value="#{dtSortView.products1}" allowUnsorting="true" sortMode="single">
                         <p:column sortBy="#{product.code}" headerText="Code">
                             <h:outputText value="#{product.code}"/>
