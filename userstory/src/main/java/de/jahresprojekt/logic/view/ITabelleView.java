@@ -6,6 +6,7 @@
 package de.jahresprojekt.logic.view;
 
 import de.jahresprojekt.logic.service.ILogikService;
+import de.jahresprojekt.logic.service.impl.BaseLogikService;
 import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import de.jahresprojekt.persistence.service.BaseRepository;
 
@@ -21,11 +22,17 @@ public interface ITabelleView<T extends BaseEntity>
      * Liefert den Logikservice.
      * @return 
      */
-    public ILogikService getLogikService();
+    public BaseLogikService getLogikService();
     
     /**
      * Setzt den LogikService.
      * @param service 
      */
-    public void setLogikService(ILogikService service);
+    public void setLogikService(BaseLogikService service);
+    
+    /**
+     * Entfernt Objekt.
+     * @param obj 
+     */
+    public void remove(T obj);
 }

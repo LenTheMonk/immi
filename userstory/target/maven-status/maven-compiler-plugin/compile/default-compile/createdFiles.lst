@@ -43,6 +43,7 @@ de\jahresprojekt\persistence\entities\Mietobjekt.class
 de\jahresprojekt\logic\service\impl\BaseLogikService.class
 de\jahresprojekt\tutorial\view\SortView.class
 de\jahresprojekt\logic\view\IView.class
+de\jahresprojekt\logic\view\IScrollView.class
 de\jahresprojekt\persistence\service\OrtRepository.class
 de\jahresprojekt\logic\service\ZahlungSrv.class
 de\jahresprojekt\persistence\entities\Ort.class

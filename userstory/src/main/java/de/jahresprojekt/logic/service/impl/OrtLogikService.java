@@ -6,12 +6,13 @@
 package de.jahresprojekt.logic.service.impl;
 
 import de.jahresprojekt.persistence.service.OrtRepository;
+import de.jahresprojekt.persistence.entities.Ort;
 
 /**
  *
  * @author Lukas Eckert
  */
-public class OrtLogikService extends BaseLogikService<OrtRepository> {
+public class OrtLogikService extends BaseLogikService<Ort, OrtRepository> {
 
     public OrtLogikService() {
         this.setRepository(new OrtRepository());

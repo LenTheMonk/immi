@@ -6,13 +6,14 @@
 package de.jahresprojekt.logic.service.impl;
 
 import de.jahresprojekt.logic.service.ILogikService;
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import de.jahresprojekt.persistence.service.BaseRepository;
 
 /**
  *
  * @author Lukas Eckert
  */
-public abstract class BaseLogikService<REPO extends BaseRepository>
+public abstract class BaseLogikService<T extends BaseEntity, REPO extends BaseRepository<T>>
         implements ILogikService<REPO> {
 
     private REPO repository;

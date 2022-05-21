@@ -6,6 +6,7 @@
 package de.jahresprojekt.logic.view.impl;
 
 import de.jahresprojekt.logic.service.ILogikService;
+import de.jahresprojekt.logic.service.impl.BaseLogikService;
 import de.jahresprojekt.logic.view.ITabelleView;
 import de.jahresprojekt.persistence.entities.base.BaseEntity;
 import de.jahresprojekt.persistence.service.BaseRepository;
@@ -17,16 +18,17 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortMeta;
 
 /**
  *
  * @author Lukas Eckert
  */
-public abstract class BaseTabelleView <T extends BaseEntity>
+public abstract class BaseTabelleView <T extends BaseEntity, REP extends BaseRepository<T>>
         implements ITabelleView<T>, Serializable {
     
-    private ILogikService service;
+    private BaseLogikService<T, REP> service;
     
     private List<T> entities;
     
@@ -70,12 +72,12 @@ public abstract class BaseTabelleView <T extends BaseEntity>
     }
 
     @Override
-    public ILogikService getLogikService() {
+    public BaseLogikService<T, REP> getLogikService() {
         return this.service;
     }
     
     @Override
-    public void setLogikService(ILogikService service) {
+    public void setLogikService(BaseLogikService service) {
         this.service = service;
     }
     
@@ -124,6 +126,5 @@ public abstract class BaseTabelleView <T extends BaseEntity>
                 String.valueOf(newEntitiy.getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    
-    
+
 }

@@ -35,7 +35,8 @@ import de.deuka.eckert.userstory.immi.view.SortView; -->
                     <p:remoteCommand name="remoteUpdateOrtTable" update="ortTabelle" />
                     
                     <p:dataTable id="ortTabelle" var="ort" value="#{ortTabelleView.fullList}"
-                                 editable="true" allowUnsorting="true" sortMode="single" widgetVar="ortDt" >
+                                 editable="true" allowUnsorting="true" sortMode="single" widgetVar="ortDt" 
+                                 scrollHeight="500" scrollable="true">
                         
                         <p:ajax event="rowEdit" listener="#{ortTabelleView.onRowEdit}" oncomplete="remoteUpdateOrtTable();"/>
                         <p:ajax event="rowEditCancel" listener="#{ortTabelleView.onRowCancel}"/>
@@ -66,6 +67,10 @@ import de.deuka.eckert.userstory.immi.view.SortView; -->
                         
                         <p:column style="width:6rem">
                             <p:rowEditor editTitle="Bearbeiten" cancelTitle="Abbrechen" saveTitle="Speichern"/>
+                        </p:column>
+                        
+                        <p:column style="width:6rem">
+                            <p:commandButton title="Löschen" action="#{ortTabelleView.remove(ort)}" oncomplete="remoteUpdateOrtTable();"/>
                         </p:column>
                     </p:dataTable>
                     
