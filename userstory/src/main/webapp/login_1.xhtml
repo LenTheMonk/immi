@@ -6,36 +6,37 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <h:head>
+    <head>
         <title>Immobilien- und Mieterverwaltung der HausBau GbR-Anmelden</title> 
-     </h:head>  
- 
-    <h:body style="background-size: cover; background-position: center; font-family: sans-serif;
+    </head>  
+    <body style="background-size: cover; background-position: center; font-family: sans-serif;
           background-image: url(https://www.familie-und-tipps.de/Wohnen/Umzug/Bilder/Umziehen.jpg)" >
         
-        <p:growl id="infoMsg" showDetail="true"/>
+        <growl id="infoMsg" showDetail="true"/>
         <h1 style="padding:30px">
             
         </h1>
         <div style="width: 500px;height: 300; background: rgba(0,0,0,0.8); margin: 5% auto; padding: 10px 0; color:#fff;
              box-shadow: 0 0 20px 2px rgba(0,0,0,0.5)">
             <h1 style="text-align: center; margin-bottom:10px">Anmelden</h1>
-                <h:form id="autoQuoteForm" >
-                    <div> 
-                      <p:inputText  id="email" value="" style="margin: 45px; border: none;padding-top: 10px; outline: none;width: 80%;
+                <form id="autoQuoteForm" >
+                    <div>
+                      <input id="email" value="#{user.email}" style="margin: 45px; border: none;padding-top: 10px; outline: none;width: 80%;
                          border-bottom: 1px solid #fff; background: transparent; color: #fff"  type="email" placeholder="example@email.com" />
                     </div>
     
                     <div>
-                        <p:inputText  id="password" value=""  style="margin: 45px; border: none; outline: none; width: 80%; 
+                        <input id="password" value="#{user.password}"  style="margin: 45px; border: none; outline: none; width: 80%; 
                          border-bottom: 1px solid #fff;padding-top: 10px; background: transparent ;color: #fff" type="password" placeholder="Kentwort" />
                     </div>
                    
-                     <p:inputText  style="margin: 45px; border: 1px solid #fff; width: 80%; padding: 10px ; 
-                          background: transparent; color: #fff; font-size: 20px" type="button" 
+                     <input style="margin: 45px; border: 1px solid #fff; width: 80%; padding: 10px ; 
+                          background: transparent; color: #fff; font-size: 20px" type="button" value="#{user.pruefen}"
                           onclick="window.location.href = 'http://localhost:8080/userstory/startSeite.xhtml';" value="Los Geht!"/>
-                </h:form>
+                    
+              
+                </form>
             </div>        
-        </h:body>
+        </body>
 </html>
 
