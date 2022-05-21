@@ -23,6 +23,7 @@ public class OrtTabelleView extends BaseTabelleView<Ort> {
 
     public OrtTabelleView() {
         this.setLogikService(new OrtLogikService());
+        this.init();
     }
 
     @Override

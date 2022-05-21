@@ -37,11 +37,10 @@ public abstract class BaseTabelleView <T extends BaseEntity>
      */
     public abstract void initSortMeta();
 
-    @PostConstruct
     public void init() {
         this.sortMeta = new ArrayList<>();
-        this.setFullList(this.getLogikService().getRepository().findAll());
         this.initSortMeta();
+        this.setFullList(this.getLogikService().getRepository().findAll());
     }
     
     @Override

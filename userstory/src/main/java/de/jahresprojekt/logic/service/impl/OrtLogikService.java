@@ -5,7 +5,6 @@
  */
 package de.jahresprojekt.logic.service.impl;
 
-import de.jahresprojekt.logic.service.ILogikService;
 import de.jahresprojekt.persistence.service.OrtRepository;
 
 /**
@@ -13,7 +12,9 @@ import de.jahresprojekt.persistence.service.OrtRepository;
  * @author Lukas Eckert
  */
 public class OrtLogikService extends BaseLogikService<OrtRepository> {
-    
-    
+
+    public OrtLogikService() {
+        this.setRepository(new OrtRepository());
+    }
     
 }
