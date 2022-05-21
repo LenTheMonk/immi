@@ -26,7 +26,7 @@ import java.sql.DriverManager;
  * @author George
  */
 
-public class user {
+public class UserSrv {
     
     String email;
     String password;
@@ -39,7 +39,7 @@ public class user {
     static final String Email="trhrth";//muss eingeben
     static final String pass="hrthrt";//muss eingeben
     
-    public user(){
+    public UserSrv(){
     }
     
     public String pruefen(){
