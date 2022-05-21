@@ -36,42 +36,45 @@ import de.deuka.eckert.userstory.immi.view.SortView; -->
                     
                     <p:dataTable id="ortTabelle" var="ort" value="#{ortTabelleView.fullList}"
                                  editable="true" allowUnsorting="true" sortMode="single" widgetVar="ortDt" 
-                                 scrollHeight="500" scrollable="true">
+                                 scrollHeight="500" scrollWidth="1000" scrollable="true">
                         
                         <p:ajax event="rowEdit" listener="#{ortTabelleView.onRowEdit}" oncomplete="remoteUpdateOrtTable();"/>
                         <p:ajax event="rowEditCancel" listener="#{ortTabelleView.onRowCancel}"/>
 
-                        <p:column sortBy="#{ort.id}" headerText="ID">
+                        <p:column sortBy="#{ort.id}" headerText="ID" width="100">
                             <h:outputText value="#{ort.id}"/>
                         </p:column>
-                        <p:column sortBy="#{ort.name}" headerText="Name" sortOrder="asc">
+                        
+                        <p:column sortBy="#{ort.name}" headerText="Name" sortOrder="asc" width="150">
                             <p:cellEditor>
                                 <f:facet name="output">
                                     <h:outputText value="#{ort.name}"/>
                                 </f:facet>
                                 <f:facet name="input">
-                                    <p:inputText value="#{ort.name}" style="width:100%"/>
-                                </f:facet>
-                            </p:cellEditor>
-                        </p:column>
-                        <p:column sortBy="#{ort.plz}" headerText="PLZ">
-                            <p:cellEditor>
-                                <f:facet name="output">
-                                    <h:outputText value="#{ort.plz}"/>
-                                </f:facet>
-                                <f:facet name="input">
-                                    <p:inputText value="#{ort.plz}" style="width:100%"/>
+                                    <p:inputText value="#{ort.name}" style="width:90%"/>
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
                         
-                        <p:column style="width:6rem">
+                        <p:column sortBy="#{ort.plz}" headerText="PLZ" width="80">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{ort.plz}" style="align"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputNumber value="#{ort.plz}" inputStyle="width: 90%" decimalPlaces="0" minValue="0" maxValue="99999" thousandSeparator=""/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        
+                        <p:column width="60">
                             <p:rowEditor editTitle="Bearbeiten" cancelTitle="Abbrechen" saveTitle="Speichern"/>
                         </p:column>
                         
-                        <p:column style="width:6rem">
-                            <p:commandButton title="Löschen" action="#{ortTabelleView.remove(ort)}" oncomplete="remoteUpdateOrtTable();"/>
+                        <p:column width="30">
+                            <p:commandButton icon="pi pi-trash" action="#{ortTabelleView.remove(ort)}" oncomplete="remoteUpdateOrtTable();"/>
                         </p:column>
+
                     </p:dataTable>
                     
                     <p:commandButton id="addOrtButton" value="Neue Zeile" process="@this" action="#{ortTabelleView.onAddNew()}"
