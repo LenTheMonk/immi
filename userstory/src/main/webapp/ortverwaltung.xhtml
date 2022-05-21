@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!-- package de.deuka.eckert.userstory.immi; -->
+<!-- package de.deuka.eckert.userstory.immi.view; -->
+<!-- import de.deuka.eckert.userstory.immi.view.ProductService;
+import de.deuka.eckert.userstory.immi.view.SortView; -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <link rel="stylesheet" media="all" type="text/css" href="css/ortverwaltung.css" />
+        <title>Ortverwaltung</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>   
+    </h:head>
+    <body>
+        <header>
+            <a href="/index.xhtml">
+                <div class="logo"></div>
+            </a>
+        </header>
+        
+        <main>
+            <h:form id="tabelleForm">
+                <div class="card">
+                    <h5>Mietobjekte</h5>
+                    <p:dataTable id="ortTabelle" var="ort" value="#{ortTabelleView.fullList}"
+                                 editable="true" allowUnsorting="true" sortMode="single" >
+                        
+                        <p:ajax event="rowEdit" listener="#{ortTabelleView.onRowEdit}"/>
+                        <p:ajax event="rowEditCancel" listener="#{ortTabelleView.onRowCancel}"/>
+
+                        <p:column sortBy="#{ort.id}" headerText="ID">
+                            <h:outputText value="#{ort.id}"/>
+                        </p:column>
+                        <p:column sortBy="#{ort.name}" headerText="Name" sortOrder="asc">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{ort.name}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{ort.name}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column sortBy="#{ort.plz}" headerText="PLZ">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{ort.plz}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{ort.plz}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        
+                        <p:column style="width:6rem">
+                            <p:rowEditor editTitle="Bearbeiten" cancelTitle="Abbrechen" saveTitle="Speichern"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </h:form>
+        </main>
+        
+        <footer>
+            
+        </footer>
+    </body>
+</html>

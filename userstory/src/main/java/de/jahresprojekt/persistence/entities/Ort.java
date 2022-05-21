@@ -6,6 +6,7 @@
 package de.jahresprojekt.persistence.entities;
 
 import de.jahresprojekt.persistence.entities.base.BaseEntity;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -32,7 +33,12 @@ public class Ort extends BaseEntity {
     long id;
     
     // Alle Sonstigen Felder, die in der Datenbank abgelegt werden sollen
+    public static final String MAP_NAME = "name";
+    @Column(nullable = false, name = Ort.MAP_NAME)
     String name;
+    
+    public static final String MAP_PLZ = "plz";
+    @Column(nullable = false, name = Ort.MAP_PLZ)
     int plz;
     
     // Felder, die nicht in der Datenbank landen sollen, sind Transient!

@@ -56,7 +56,7 @@
 
     <!-- Welcome -->       
     <welcome-file-list>
-        <welcome-file>mietobjektverwaltung.xhtml</welcome-file>
+        <welcome-file>ortverwaltung.xhtml</welcome-file>
     </welcome-file-list>
       
 
