@@ -4,10 +4,11 @@
  */
 package de.jahresprojekt.logic.service;
 
+
 /**
  *
  * @author Alex
  */
-public class Immobilie {
+public class MieterSrv {
     
 }

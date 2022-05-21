@@ -8,6 +8,6 @@ package de.jahresprojekt.logic.service;
  *
  * @author Alex
  */
-public class Zahlung {
+public class ZahlungSrv {
     
 }
