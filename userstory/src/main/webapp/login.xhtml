@@ -13,7 +13,7 @@
     <h:body style="background-size: cover; background-position: center; font-family: sans-serif;
           background-image: url(https://www.familie-und-tipps.de/Wohnen/Umzug/Bilder/Umziehen.jpg)" >
         
-        <p:growl id="infoMsg" showDetail="true"/>
+       
         <h1 style="padding:30px">
             
         </h1>
@@ -28,13 +28,15 @@
     
                     <div>
                         <p:inputText  id="password" value=""  style="margin: 45px; border: none; outline: none; width: 80%; 
-                         border-bottom: 1px solid #fff;padding-top: 10px; background: transparent ;color: #fff" type="password" placeholder="Kentwort" />
+                         border-bottom: 1px solid #fff;padding-top: 10px; background: transparent ;color: #fff" type="password" placeholder="Kennwort" />
                     </div>
                    
-                     <p:inputText  style="margin: 45px; border: 1px solid #fff; width: 80%; padding: 10px ; 
-                          background: transparent; color: #fff; font-size: 20px" type="button" 
-                          onclick="window.location.href = 'http://localhost:8080/userstory/startSeite.xhtml';" value="Los Geht!"/>
+                      <h:commandButton style="margin: 45px; border: 1px solid #fff; width: 80%; padding: 10px ; 
+                          background: transparent; color: #fff; font-size: 20px"   
+                          onclick="window.location.href = 'http://localhost:8080/userstory/startSeite.xhtml';" 
+                          value="Los Geht!" ></h:commandButton>
                 </h:form>
+               
             </div>        
         </h:body>
 </html>

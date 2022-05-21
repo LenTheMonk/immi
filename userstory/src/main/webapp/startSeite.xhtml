@@ -8,22 +8,31 @@
 
     <h:head>
         <title>Immobilien- und Mieterverwaltung der HausBau GbR</title> 
-        <link url="user.java"></link>
+        
     </h:head>  
     <h:body>
-        <p:growl id="infoMsg" showDetail="true"/>
+       
         <h1 style="color: #086788; font-size: 40px; margin: 0 auto; text-align: center ;padding:10px">
                 Immobilien- und Mieterverwaltung der HausBau GbR</h1>
         <h:form id = "form">
             <p:menubar style="background-color: #74C69D; padding-left: 10px;margin: 0 auto"> 
+                
                 <p:menuitem  icon="pi pi-home" url="startSeite.xhtml" value="Start"  />
                 <p:menuitem  icon="pi pi-building" url="Immobilienverwaltung.xhtml" value="Immobilienverwaltung"/>
                 <p:menuitem  icon="pi pi-building" url="Mieterverwaltung.xhtml" value="Mieterverwaltung"/>
                 <p:menuitem  icon="pi pi-euro"  url="Zahlungsübersicht.xhtml" value="Zahlungsübersicht"/>
-              
-                   
+                <f:facet name="options">
+                    <i class="pi  pi-upload" ></i>
+                    <p:inputText type="button" value="Abmelden" style="background-color: #74C69D; border: none"  onclick="window.location.href = 'http://localhost:8080/userstory/login.xhtml';"/>
+                       
+                </f:facet>
             </p:menubar>
-            <p:graphicImage url="https://www.wehner-immobilien.com/wp-content/uploads/2016/12/slider1-2.jpg"   width="100%"  height="300" />
+            
+               
+            
+             <p:graphicImage url="https://www.wehner-immobilien.com/wp-content/uploads/2016/12/slider1-2.jpg"   width="100%"  height="600" />
+            
+            
             
             
             <div style="padding-left: 300px; padding-right: 300px; width: 70%; font-size: 40px; font-family: cursive " >
@@ -35,14 +44,14 @@
                 <p:graphicImage url=" https://mh-1-bildagentur.panthermedia.net/media/media_detail/0022000000/22683000/~team-puzzle-in-der-gruppe-_22683597_detail.jpg" width="400px"  height="400" />
 
             </div>
-            <div style="padding-left: 300px; padding-right: 300px; width: 70%; font-size: 25px">
+            <div style="padding-left: 300px; padding-right: 300px; width: 70%; font-size: 25px; font-family: 'Roboto',Arial,sans-serif;">
                 <p>
-                Diese Seite enthäl das Immobilienportofolio von ca.30 oder mehr Objekten für private oder gewerbliche Zwecke.
+                Immobilien- und Mieterverwaltung der HausBau GbR ist Teil eines der weltweit größten Unternehmen für digitale Immobilientechnologie.
+                Die immowelt Mission ist es, künftig alle Schritte der Immobilientransaktion zu digitalisieren, um diese für alle Beteiligten so unkompliziert und einfach wie möglich zu gestalten.
                 </p>
                 <p>
+                Diese Seite enthäl das Immobilienportofolio von ca.30 oder mehr Objekten für private oder gewerbliche Zwecke.                       
                 Immobilien-und Mieterverwaltung(hinzufügen, ändern, löschen) werden ebenfalls über die Eingabe von ID, Objektnummer, Anschrift usw verwaltet.
-                 </p>
-                <p>
                 Beim Zahlungsübersicht können Sie auf die Mietzahlungen und Ausfälle Rechnungen sehen. 
                 </p>
             </div>
@@ -50,11 +59,17 @@
                 
             
             <div style="background-color: #74C69D;   margin: 0 auto; text-align: center ;padding:50px"> 
-                <p:commandButton  icon="pi pi-at" styleClass="rounded-button ui-button-flat" action="" />
-                <p:commandButton  icon="pi pi-whatsapp" styleClass="rounded-button ui-button-flat" action=""/>
-                <p:commandButton  icon="pi pi-instagram" styleClass="rounded-button ui-button-flat" action=""/>
-                <p:commandButton  icon="pi pi-phone" styleClass="rounded-button ui-button-flat" action=""/>
-               
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate/>
+                 </p:messages>
+                <p:commandButton  icon="pi pi-at" styleClass="rounded-button ui-button-flat ui-button-plain" action="#{messagesView.email}" /> 
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <p:commandButton  icon="pi pi-whatsapp" styleClass="rounded-button ui-button-flat ui-button-plain" action="#{messagesView.whatsapp}"/> 
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <p:commandButton  icon="pi pi-instagram" styleClass="rounded-button ui-button-flat ui-button-plain" action="#{messagesView.instagram}"/> 
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <p:commandButton  icon="pi pi-phone" styleClass="rounded-button ui-button-flat ui-button-plain" action="#{messagesView.phone}"/> 
+               &nbsp; &nbsp; &nbsp; &nbsp;
 
 
             </div>
