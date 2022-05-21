@@ -19,7 +19,6 @@ de\jahresprojekt\persistence\service\iRepositories\INutzerRepository.class
 de\jahresprojekt\persistence\service\iRepositories\IRepository.class
 de\jahresprojekt\persistence\entities\Mietobjekt.class
 de\jahresprojekt\persistence\utils\HibernateUtils.class
-de\jahresprojekt\logic\service\user.class
 de\jahresprojekt\persistence\service\ZahlungRepository.class
 de\jahresprojekt\tutorial\view\ProductService.class
 de\jahresprojekt\tutorial\view\SortView.class
@@ -31,9 +30,11 @@ de\jahresprojekt\persistence\service\NutzerRepository.class
 de\jahresprojekt\logic\service\CurrUser.class
 de\jahresprojekt\logic\util\HashUtils.class
 de\jahresprojekt\persistence\entities\Ort.class
+de\jahresprojekt\logic\service\MessagesView.class
 de\jahresprojekt\logic\util\StringUtils.class
 de\jahresprojekt\logic\view\BaseSortierView.class
 de\jahresprojekt\persistence\entities\Ansprechpartner.class
+de\jahresprojekt\logic\service\UserSrv.class
 de\jahresprojekt\persistence\service\MietkomplexRepository.class
 de\jahresprojekt\persistence\entities\Zahlung.class
 de\jahresprojekt\persistence\entities\NebenkostenJahr.class
