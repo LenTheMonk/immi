@@ -5,10 +5,16 @@
  */
 package de.jahresprojekt.logic.view;
 
+import de.jahresprojekt.persistence.entities.base.BaseEntity;
+
 /**
  *
  * @author Lukas Eckert
  */
-public interface IAddView {
+public interface IAddView<T extends BaseEntity> extends IView<T> {
     
+    /**
+     * Methode die bei Hinzufügen einer neuen Spalte ausgeführt wird.
+     */
+    public void onAddNew();
 }

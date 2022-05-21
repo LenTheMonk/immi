@@ -49,6 +49,12 @@ public abstract class BaseTabelleView <T extends BaseEntity>
     }
 
     @Override
+    public void fetchListe() {
+        this.getFullList().clear();
+        this.getFullList().addAll(this.getLogikService().getRepository().findAll());
+    }
+
+    @Override
     public void setFullList(List<T> liste) {
         this.entities = liste;
     }
@@ -75,6 +81,8 @@ public abstract class BaseTabelleView <T extends BaseEntity>
     
     @Override
     public void onRowEdit(RowEditEvent<T> event) {
+        this.getLogikService().getRepository().save(this.getFullList());
+        this.fetchListe();
         FacesMessage msg = new FacesMessage("Objekt bearbeitet",
             String.valueOf(event.getObject().getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -99,4 +107,23 @@ public abstract class BaseTabelleView <T extends BaseEntity>
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
+
+    /**
+     * Initialisiert neues Entity.
+     * @return Entity
+     */
+    abstract T initNewEntity();
+    
+    @Override
+    public void onAddNew() {
+        T newEntitiy = this.initNewEntity();
+        
+        this.entities.add(newEntitiy);
+        
+        FacesMessage msg = new FacesMessage("Entity erstellt",
+                String.valueOf(newEntitiy.getId()));
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    
 }

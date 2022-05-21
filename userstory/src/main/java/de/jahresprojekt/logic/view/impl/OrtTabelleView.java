@@ -49,9 +49,8 @@ public class OrtTabelleView extends BaseTabelleView<Ort> {
     }
 
     @Override
-    public void fetchListe() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected Ort initNewEntity() {
+        return new Ort("", 0);
     }
-    
     
 }

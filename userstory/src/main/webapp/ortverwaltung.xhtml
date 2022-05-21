@@ -29,12 +29,15 @@ import de.deuka.eckert.userstory.immi.view.SortView; -->
         
         <main>
             <h:form id="tabelleForm">
+                <p:growl id="msgs" showDetail="true"/>
                 <div class="card">
                     <h5>Orte</h5>
+                    <p:remoteCommand name="remoteUpdateOrtTable" update="ortTabelle" />
+                    
                     <p:dataTable id="ortTabelle" var="ort" value="#{ortTabelleView.fullList}"
-                                 editable="true" allowUnsorting="true" sortMode="single" >
+                                 editable="true" allowUnsorting="true" sortMode="single" widgetVar="ortDt" >
                         
-                        <p:ajax event="rowEdit" listener="#{ortTabelleView.onRowEdit}"/>
+                        <p:ajax event="rowEdit" listener="#{ortTabelleView.onRowEdit}" oncomplete="remoteUpdateOrtTable();"/>
                         <p:ajax event="rowEditCancel" listener="#{ortTabelleView.onRowCancel}"/>
 
                         <p:column sortBy="#{ort.id}" headerText="ID">
@@ -65,6 +68,9 @@ import de.deuka.eckert.userstory.immi.view.SortView; -->
                             <p:rowEditor editTitle="Bearbeiten" cancelTitle="Abbrechen" saveTitle="Speichern"/>
                         </p:column>
                     </p:dataTable>
+                    
+                    <p:commandButton id="addOrtButton" value="Neue Zeile" process="@this" action="#{ortTabelleView.onAddNew()}"
+                                     oncomplete="remoteUpdateOrtTable();"/>
                 </div>
             </h:form>
         </main>

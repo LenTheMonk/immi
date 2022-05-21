@@ -15,6 +15,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.primefaces.component.datatable.DataTable;
 
 /**
  * Testklasse
@@ -29,14 +30,17 @@ public class SteuerungTest {
     public static void main(String[] args) {
         
 
-        NutzerRepository rep = new NutzerRepository();
+//        NutzerRepository rep = new NutzerRepository();
+//        
+//        rep.save(new Nutzer("Owner", HashUtils.getHash("noctis"), Boolean.TRUE,
+//                "Lukas", "Eckert", "eckert@web.de",
+//                "12345 667788", "0815 87654321"));
+//        
+//        System.out.println("de.jahresprojekt.persistence.test.SteuerungTest.main()");
         
-        rep.save(new Nutzer("Owner", HashUtils.getHash("noctis"), Boolean.TRUE,
-                "Lukas", "Eckert", "eckert@web.de",
-                "12345 667788", "0815 87654321"));
-        
-        System.out.println("de.jahresprojekt.persistence.test.SteuerungTest.main()");
-        
+        DataTable ds = new DataTable();
+        for (String d : ds.getEventNames()) {
+            System.out.println(d);
+        }
     }
-    
 }

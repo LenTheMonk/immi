@@ -14,7 +14,7 @@ import de.jahresprojekt.persistence.service.BaseRepository;
  * @author Lukas Eckert
  */
 public interface ITabelleView<T extends BaseEntity>
-        extends ISortierView<T>, IEditView<T> {
+        extends ISortierView<T>, IEditView<T>, IAddView<T> {
     
     
     /**
