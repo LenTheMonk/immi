@@ -5,7 +5,7 @@
  */
 package de.jahresprojekt.logic.view;
 
-import de.jahresprojekt.persistence.entities.base.BaseEntity;
+import de.jahresprojekt.persistence.entities.impl.BaseEntity;
 import java.util.List;
 import org.primefaces.model.SortMeta;
 

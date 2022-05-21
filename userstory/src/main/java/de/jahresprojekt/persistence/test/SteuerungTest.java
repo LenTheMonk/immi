@@ -6,11 +6,11 @@
 package de.jahresprojekt.persistence.test;
 
 import de.jahresprojekt.logic.util.HashUtils;
-import de.jahresprojekt.persistence.entities.Nutzer;
+import de.jahresprojekt.persistence.entities.impl.Nutzer;
 import de.jahresprojekt.persistence.utils.HibernateUtils;
-import de.jahresprojekt.persistence.entities.Ort;
-import de.jahresprojekt.persistence.service.NutzerRepository;
-import de.jahresprojekt.persistence.service.OrtRepository;
+import de.jahresprojekt.persistence.entities.impl.Ort;
+import de.jahresprojekt.persistence.repositories.impl.NutzerRepository;
+import de.jahresprojekt.persistence.repositories.impl.OrtRepository;
 import java.util.List;
 import javax.persistence.EntityManager;
 import org.hibernate.Session;

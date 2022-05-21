@@ -5,7 +5,7 @@
  */
 package de.jahresprojekt.logic.service;
 
-import de.jahresprojekt.persistence.service.BaseRepository;
+import de.jahresprojekt.persistence.repositories.impl.BaseRepository;
 
 /**
  *

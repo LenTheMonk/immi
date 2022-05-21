@@ -6,8 +6,8 @@
 package de.jahresprojekt.logic.service.impl;
 
 import de.jahresprojekt.logic.service.ILogikService;
-import de.jahresprojekt.persistence.entities.base.BaseEntity;
-import de.jahresprojekt.persistence.service.BaseRepository;
+import de.jahresprojekt.persistence.entities.impl.BaseEntity;
+import de.jahresprojekt.persistence.repositories.impl.BaseRepository;
 
 /**
  *

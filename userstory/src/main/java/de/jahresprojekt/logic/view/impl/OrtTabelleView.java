@@ -6,8 +6,8 @@
 package de.jahresprojekt.logic.view.impl;
 
 import de.jahresprojekt.logic.service.impl.OrtLogikService;
-import de.jahresprojekt.persistence.entities.Ort;
-import de.jahresprojekt.persistence.service.OrtRepository;
+import de.jahresprojekt.persistence.entities.impl.Ort;
+import de.jahresprojekt.persistence.repositories.impl.OrtRepository;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;

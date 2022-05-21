@@ -5,8 +5,8 @@
  */
 package de.jahresprojekt.logic.view;
 
-import de.jahresprojekt.persistence.entities.base.BaseEntity;
-import de.jahresprojekt.persistence.service.BaseRepository;
+import de.jahresprojekt.persistence.entities.impl.BaseEntity;
+import de.jahresprojekt.persistence.repositories.impl.BaseRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;

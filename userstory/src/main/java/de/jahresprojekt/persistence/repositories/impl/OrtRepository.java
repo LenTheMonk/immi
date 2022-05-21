@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.jahresprojekt.logic.service.impl;
+package de.jahresprojekt.persistence.repositories.impl;
 
-import de.jahresprojekt.persistence.repositories.impl.OrtRepository;
 import de.jahresprojekt.persistence.entities.impl.Ort;
+
 
 /**
  *
  * @author Lukas Eckert
  */
-public class OrtLogikService extends BaseLogikService<Ort, OrtRepository> {
+public class OrtRepository extends BaseRepository<Ort> {
 
-    public OrtLogikService() {
-        this.setRepository(new OrtRepository());
+    @Override
+    Class getManagedClass() {
+        return Ort.class;
     }
     
 }
