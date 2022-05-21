@@ -1,0 +1,26 @@
+            Mietobjekt
+            
+            -> ID
+            -> Objektnummer (ausweisen als id nicht editierbar)
+            -> Objekttyp (priv / gewerb)
+            -> Objektbeschreibung
+            -> Anschrift (str, plz, ort)
+            -> Wohnfläche
+            -> QM PReis kalt
+            
+            -> Nebenkosten ges
+            
+            =======================
+            -> Nebenkosten pro QM
+            -> Objektkaltmiete
+            -> QM Preis Warm
+            -> Objektwarmmiete
+            ==================
+            
+            
+            -> Objektmieter
+            -> Ansprechpartner
+            -> Mietkomplexzugehörigkeit
+            
+            
+            -> Notiz

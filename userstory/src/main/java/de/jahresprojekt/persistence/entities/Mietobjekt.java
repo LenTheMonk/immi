@@ -34,9 +34,9 @@ public class Mietobjekt extends BaseEntity {
     @GeneratedValue
     private long id;
     
-    public static final String MAP_BEZEICHNUNG = "bezeichnung";
-    @Column(nullable = false, name = Mietobjekt.MAP_BEZEICHNUNG)
-    private String bezeichnung;
+    public static final String MAP_BESCHREIBUNG = "beschreibung";
+    @Column(nullable = false, name = Mietobjekt.MAP_BESCHREIBUNG)
+    private String beschreibung;
     
     public static final String MAP_STRASSE = "strasse";
     @Column(nullable = false, name = Mietobjekt.MAP_STRASSE)
@@ -117,7 +117,7 @@ public class Mietobjekt extends BaseEntity {
     	    String aOrt, Integer aQm, Double aQmpreiskalt, Double aNebenkosten, boolean aIstGewerblich, boolean aIstVermietet, 
     	    Timestamp aMietbeginn, Timestamp aMietende ) {
         id = aId;
-        bezeichnung = aBezeichnung;
+        beschreibung = aBezeichnung;
         strasse = aStrasse;
         plz = aPlz;
         ort = aOrt;
@@ -148,11 +148,11 @@ public class Mietobjekt extends BaseEntity {
     }
     
     public String getBezeichnung() {
-        return bezeichnung;
+        return beschreibung;
     }
      
     public void setBezeichnung(String aBezeichnung) {
-    	bezeichnung = aBezeichnung; 
+    	beschreibung = aBezeichnung; 
     }
     
     public Integer getQm() {
