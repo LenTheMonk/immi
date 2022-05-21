@@ -1,5 +1,6 @@
 package de.jahresprojekt.tutorial.view;
 
+@Deprecated
 public enum InventoryStatus {
     INSTOCK("In Stock"),
     OUTOFSTOCK("Out of Stock"),

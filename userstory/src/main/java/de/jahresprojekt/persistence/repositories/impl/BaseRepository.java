@@ -5,12 +5,15 @@
  */
 package de.jahresprojekt.persistence.repositories.impl;
 
+import de.jahresprojekt.logic.util.ObjectUtils;
 import de.jahresprojekt.persistence.entities.impl.BaseEntity;
 import de.jahresprojekt.persistence.repositories.IRepository;
 import de.jahresprojekt.persistence.utils.HibernateUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -44,8 +47,11 @@ public abstract class BaseRepository<T extends BaseEntity>
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(getManagedClass());
         query.from(getManagedClass());
+
+        return (List<T>) ObjectUtils.firstNotNull(
+            manager.createQuery(query).getResultList(),
+            new ArrayList<>());
         
-        return manager.createQuery(query).getResultList();
     }
     
     @Override

@@ -8,13 +8,14 @@ package de.jahresprojekt.logic.service.impl;
 import de.jahresprojekt.logic.service.ILogikService;
 import de.jahresprojekt.persistence.entities.impl.BaseEntity;
 import de.jahresprojekt.persistence.repositories.impl.BaseRepository;
+import java.io.Serializable;
 
 /**
  *
  * @author Lukas Eckert
  */
 public abstract class BaseLogikService<T extends BaseEntity, REPO extends BaseRepository<T>>
-        implements ILogikService<REPO> {
+        implements ILogikService<REPO>, Serializable {
 
     private REPO repository;
     

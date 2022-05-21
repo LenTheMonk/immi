@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @author Lukas
  */
+@Deprecated
 public abstract class GenericBean<T> implements Serializable {
     
     private T object;

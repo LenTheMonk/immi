@@ -1,4 +1,6 @@
+de\jahresprojekt\logic\util\ObjectUtils.class
 de\jahresprojekt\persistence\entities\impl\BaseEntity.class
+de\jahresprojekt\logic\view\impl\MietobjektverwaltungTabelleView.class
 de\jahresprojekt\persistence\repositories\impl\ZahlungRepository.class
 de\jahresprojekt\logic\view\ITabelleView.class
 de\jahresprojekt\logic\service\alexUndGeorge\CurrUser.class
@@ -20,7 +22,6 @@ de\jahresprojekt\persistence\test\SteuerungTest.class
 de\jahresprojekt\logic\util\TimestampUtils.class
 de\jahresprojekt\persistence\repositories\impl\AnsprechpartnerRepository.class
 de\jahresprojekt\logic\util\HashUtils.class
-de\jahresprojekt\logic\view\BaseSortierView.class
 de\jahresprojekt\persistence\entities\impl\Zahlung.class
 de\jahresprojekt\logic\service\alexUndGeorge\MieterSrv.class
 de\jahresprojekt\logic\view\ISortierView.class
@@ -32,6 +33,7 @@ de\jahresprojekt\logic\service\alexUndGeorge\immobilienManager.class
 de\jahresprojekt\logic\service\alexUndGeorge\ZahlungSrv.class
 de\jahresprojekt\logic\view\IAddView.class
 de\jahresprojekt\persistence\entities\IEntity.class
+de\jahresprojekt\logic\view\impl\BaseSortierView.class
 de\jahresprojekt\logic\service\ILogikService.class
 de\jahresprojekt\persistence\entities\impl\Mieter.class
 de\jahresprojekt\persistence\entities\impl\NebenkostenJahr.class
@@ -53,3 +55,4 @@ de\jahresprojekt\logic\service\impl\LoginService.class
 de\jahresprojekt\persistence\entities\impl\Mietkomplex.class
 de\jahresprojekt\persistence\repositories\impl\MieterRepository.class
 de\jahresprojekt\persistence\repositories\impl\MietkomplexRepository.class
+de\jahresprojekt\logic\service\impl\MietobjektverwaltungLogikService.class

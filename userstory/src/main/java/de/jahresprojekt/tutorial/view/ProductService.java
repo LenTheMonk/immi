@@ -21,6 +21,7 @@ import javax.inject.Named;
 
 @Named(value = "pS")
 @ApplicationScoped
+@Deprecated
 public class ProductService {
 
     private List<Product> products;

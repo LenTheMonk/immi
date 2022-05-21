@@ -28,11 +28,6 @@ public class OrtTabelleView extends BaseTabelleView<Ort, OrtRepository> {
     }
 
     @Override
-    public List<Ort> getFullList() {
-        return super.getFullList();
-    }
-
-    @Override
     public void initSortMeta() {
         // Name
         this.getSortBy().add(
@@ -46,7 +41,13 @@ public class OrtTabelleView extends BaseTabelleView<Ort, OrtRepository> {
             SortMeta.builder()
                 .field(Ort.MAP_PLZ)
                 .order(SortOrder.ASCENDING)
+//                .priority(2)
                 .build());
+    }
+
+    @Override
+    public List<Ort> getFullList() {
+        return super.getFullList();
     }
 
     @Override

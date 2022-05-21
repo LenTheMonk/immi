@@ -39,27 +39,27 @@ public class Mietobjekt extends BaseEntity {
     private String beschreibung;
     
     public static final String MAP_STRASSE = "strasse";
-    @Column(nullable = false, name = Mietobjekt.MAP_STRASSE)
+    @Column(nullable = true, name = Mietobjekt.MAP_STRASSE)
     private String strasse;
      
     public static final String MAP_PLZ = "plz";
-    @Column(nullable = false, name = Mietobjekt.MAP_PLZ)
+    @Column(nullable = true, name = Mietobjekt.MAP_PLZ)
     private String plz;
     
     public static final String MAP_ORT= "ort";
-    @Column(nullable = false, name = Mietobjekt.MAP_ORT)
+    @Column(nullable = true, name = Mietobjekt.MAP_ORT)
     private String ort;
     
     public static final String MAP_QM = "qm";
-    @Column(nullable = false, name = Mietobjekt.MAP_QM)
+    @Column(nullable = true, name = Mietobjekt.MAP_QM)
     private Integer qm; 
     
     public static final String MAP_QMPREISKALT = "qmpreiskalt";
-    @Column(nullable = false, name = Mietobjekt.MAP_QMPREISKALT)
+    @Column(nullable = true, name = Mietobjekt.MAP_QMPREISKALT)
     private Double qmpreiskalt;
     
     public static final String MAP_NEBENKOSTEN = "nebenkosten";
-    @Column(nullable = false, name = Mietobjekt.MAP_NEBENKOSTEN)
+    @Column(nullable = true, name = Mietobjekt.MAP_NEBENKOSTEN)
     private Double nebenkosten;
     
     public static final String MAP_ISTGEWERBLICH = "istGewerblich";
@@ -71,11 +71,11 @@ public class Mietobjekt extends BaseEntity {
     private boolean istVermietet;
     
     public static final String MAP_MIETBEGINN = "mietbeginn";
-    @Column(nullable = false, name = Mietobjekt.MAP_MIETBEGINN)
+    @Column(nullable = true, name = Mietobjekt.MAP_MIETBEGINN)
     private Timestamp mietbeginn;
     
     public static final String MAP_MIETENDE = "mietende";
-    @Column(nullable = false, name = Mietobjekt.MAP_MIETENDE)
+    @Column(nullable = true, name = Mietobjekt.MAP_MIETENDE)
     private Timestamp mietende;
     
     public static final String MAP_MIETER = "mieter";
@@ -113,8 +113,26 @@ public class Mietobjekt extends BaseEntity {
     public Mietobjekt() {
     }
     
+    public Mietobjekt(String aBezeichnung, String aStrasse, String aPlz,
+    	    String aOrt, Integer aQm, Double aQmpreiskalt, Double aNebenkosten,
+            boolean aIstGewerblich, boolean aIstVermietet, 
+    	    Timestamp aMietbeginn, Timestamp aMietende ) {
+                beschreibung = aBezeichnung;
+        strasse = aStrasse;
+        plz = aPlz;
+        ort = aOrt;
+        qm = aQm;
+        qmpreiskalt = aQmpreiskalt;
+        nebenkosten = aNebenkosten;
+        istGewerblich = aIstGewerblich;
+        istVermietet = aIstVermietet;
+        mietbeginn = aMietbeginn;
+        mietende = aMietende;
+    }
+    
     public Mietobjekt(Integer aId, String aBezeichnung, String aStrasse, String aPlz,
-    	    String aOrt, Integer aQm, Double aQmpreiskalt, Double aNebenkosten, boolean aIstGewerblich, boolean aIstVermietet, 
+    	    String aOrt, Integer aQm, Double aQmpreiskalt, Double aNebenkosten,
+            boolean aIstGewerblich, boolean aIstVermietet, 
     	    Timestamp aMietbeginn, Timestamp aMietende ) {
         id = aId;
         beschreibung = aBezeichnung;
@@ -145,14 +163,6 @@ public class Mietobjekt extends BaseEntity {
     @Override
     public void setId(long aId) {
         id = aId; 
-    }
-    
-    public String getBezeichnung() {
-        return beschreibung;
-    }
-     
-    public void setBezeichnung(String aBezeichnung) {
-    	beschreibung = aBezeichnung; 
     }
     
     public Integer getQm() {
@@ -209,6 +219,38 @@ public class Mietobjekt extends BaseEntity {
     
     public void setMietende(Timestamp aMietende) {
     	mietende = aMietende; 
+    }
+
+    public String getBeschreibung() {
+        return beschreibung;
+    }
+
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
+    }
+
+    public String getStrasse() {
+        return strasse;
+    }
+
+    public void setStrasse(String strasse) {
+        this.strasse = strasse;
+    }
+
+    public String getPlz() {
+        return plz;
+    }
+
+    public void setPlz(String plz) {
+        this.plz = plz;
+    }
+
+    public String getOrt() {
+        return ort;
+    }
+
+    public void setOrt(String ort) {
+        this.ort = ort;
     }
     
     public Mieter getMieter() {

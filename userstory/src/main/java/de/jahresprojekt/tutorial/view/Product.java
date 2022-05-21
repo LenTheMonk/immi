@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.criteria.Order;
 
+@Deprecated
 public class Product implements Serializable {
 
     private int id;

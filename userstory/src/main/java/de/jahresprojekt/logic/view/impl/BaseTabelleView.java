@@ -5,7 +5,6 @@
  */
 package de.jahresprojekt.logic.view.impl;
 
-import de.jahresprojekt.logic.service.ILogikService;
 import de.jahresprojekt.logic.service.impl.BaseLogikService;
 import de.jahresprojekt.logic.view.ITabelleView;
 import de.jahresprojekt.persistence.entities.impl.BaseEntity;
@@ -13,17 +12,17 @@ import de.jahresprojekt.persistence.repositories.impl.BaseRepository;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
-import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortMeta;
 
 /**
  *
  * @author Lukas Eckert
+ * @param <T> Verwalteter Entitätstyp
+ * @param <REP> Dem Entity zugehöriges Repository
  */
 public abstract class BaseTabelleView <T extends BaseEntity, REP extends BaseRepository<T>>
         implements ITabelleView<T>, Serializable {
@@ -42,7 +41,8 @@ public abstract class BaseTabelleView <T extends BaseEntity, REP extends BaseRep
     public void init() {
         this.sortMeta = new ArrayList<>();
         this.initSortMeta();
-        this.setFullList(this.getLogikService().getRepository().findAll());
+        this.setFullList(
+            this.getLogikService().getRepository().findAll());
     }
     
     @Override
@@ -119,6 +119,8 @@ public abstract class BaseTabelleView <T extends BaseEntity, REP extends BaseRep
     @Override
     public void onAddNew() {
         T newEntitiy = this.initNewEntity();
+//        System.out.println((this.getFullList() == null) + " liste ist null");
+//        System.out.println((newEntitiy == null) + " entity ist null");
         
         this.entities.add(newEntitiy);
         

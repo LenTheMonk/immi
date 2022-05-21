@@ -28,6 +28,7 @@ import org.primefaces.model.SortOrder;
 
 @Named(value = "dtSortView")
 @ViewScoped
+@Deprecated
 public class SortView implements Serializable {
 
     private List<Product> products1;

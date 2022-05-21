@@ -31,15 +31,14 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
       
         <!-- List of Class files -->
-        <mapping class="de.jahresprojekt.persistence.entities.Ort"/>
-        <mapping class="de.jahresprojekt.persistence.entities.Nutzer"/>
-        <mapping class="de.jahresprojekt.persistence.entities.Mieter"/>
-        <mapping class="de.jahresprojekt.persistence.entities.Mietkomplex"/>
-        <mapping class="de.jahresprojekt.persistence.entities.Mietobjekt"/>
-        <mapping class="de.jahresprojekt.persistence.entities.NebenkostenJahr"/>
-        <mapping class="de.jahresprojekt.persistence.entities.Ansprechpartner"/>
-        <mapping class="de.jahresprojekt.persistence.entities.Zahlung"/>
-        <!--<mapping resource = "main/java/de/jahresprojekt/persistence/OrtPojo.hbm.xml"/>-->
+        <mapping class="de.jahresprojekt.persistence.entities.impl.Ort"/>
+        <mapping class="de.jahresprojekt.persistence.entities.impl.Nutzer"/>
+        <mapping class="de.jahresprojekt.persistence.entities.impl.Mieter"/>
+		<mapping class="de.jahresprojekt.persistence.entities.impl.Mietobjekt"/>
+		<mapping class="de.jahresprojekt.persistence.entities.impl.Ansprechpartner"/>
+		<mapping class="de.jahresprojekt.persistence.entities.impl.Zahlung"/>
+		<mapping class="de.jahresprojekt.persistence.entities.impl.NebenkostenJahr"/>
+        <mapping class="de.jahresprojekt.persistence.entities.impl.Mietkomplex"/>
       
     </session-factory>
 </hibernate-configuration>
