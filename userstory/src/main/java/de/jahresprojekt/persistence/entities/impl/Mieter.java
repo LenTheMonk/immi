@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = Mieter.TABLE_NAME)
@@ -85,10 +87,16 @@ public class Mieter extends BaseEntity{
     private String kreditinstitut;
    
     
-    @OneToMany(mappedBy = Mietobjekt.MAP_MIETER, fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @OneToMany(mappedBy = Mietobjekt.MAP_MIETER, fetch=FetchType.EAGER,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                CascadeType.REFRESH, CascadeType.DETACH})
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Mietobjekt> mietobjekte = new ArrayList<>();
     
-    @OneToMany(mappedBy = Mietkomplex.MAP_MIETER, fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @OneToMany(mappedBy = Mietkomplex.MAP_MIETER, fetch=FetchType.EAGER,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                CascadeType.REFRESH, CascadeType.DETACH})
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Mietkomplex> mietkomplexe = new ArrayList<>();
     
     public Mieter() {

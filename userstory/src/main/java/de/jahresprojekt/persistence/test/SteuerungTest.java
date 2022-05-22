@@ -34,6 +34,7 @@ public class SteuerungTest {
      */
     public static void main(String[] args) {
         
+        MieterRepository mr = new MieterRepository();
 
 //        NutzerRepository rep = new NutzerRepository();
 //        
@@ -58,9 +59,9 @@ public class SteuerungTest {
 //                new Timestamp(2022, 4, 23, 0, 0, 0, 0),
 //                new Timestamp(2023, 1, 1, 0, 0, 0, 0)));
 
-        DataTable ds = new DataTable();
-        for (String d : ds.getEventNames()) {
-            System.out.println(d);
-        }
+//        DataTable ds = new DataTable();
+//        for (String d : ds.getEventNames()) {
+//            System.out.println(d);
+//        }
     }
 }

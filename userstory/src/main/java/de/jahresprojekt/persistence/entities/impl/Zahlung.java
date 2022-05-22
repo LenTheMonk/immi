@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Table(name = Zahlung.TABLE_NAME)
@@ -59,9 +61,11 @@ public class Zahlung extends BaseEntity{
     @Column(nullable = false, name = Zahlung.MAP_KREDITINSTITUT)
     private String kreditinstitut;
     
-    @OneToMany(mappedBy = Mietobjekt.MAP_ZAHLUNG,
-        cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    private List<Mietobjekt> mietobjekte = new ArrayList<>();
+    public static final String MAP_MIETOBJEKT = "mietobjekt";
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+        CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name="MIETOBJEKT_ZAHLUNG")
+    private Mietobjekt mietobjekt;
     
     public Zahlung() {
     }
@@ -149,18 +153,12 @@ public class Zahlung extends BaseEntity{
        kreditinstitut = aKreditinstitut;
     }
     
-    public List<Mietobjekt> getMietobjekte() {
-        return mietobjekte;
+    public Mietobjekt getMietobjekt() {
+        return mietobjekt;
     }
 
-    public void setMietobjekte(List<Mietobjekt> mietobjekte) {
-        this.mietobjekte = mietobjekte;
+    public void setMietobjekt(Mietobjekt mietobjekt) {
+        this.mietobjekt = mietobjekt;
     }
-    
-    public void addMietobjekt(Mietobjekt aMietobjekt) {
-        mietobjekte.add(aMietobjekt);
-        aMietobjekt.setZahlung(this);
-    }
-    
-  
+     
 }

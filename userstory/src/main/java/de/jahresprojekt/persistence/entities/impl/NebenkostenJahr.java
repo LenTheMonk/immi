@@ -22,6 +22,8 @@ import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Table(name = NebenkostenJahr.TABLE_NAME)
@@ -48,11 +50,12 @@ public class NebenkostenJahr extends BaseEntity{
     public static final String MAP_ISTBEZAHLT = "istBezahlt";
     @Column(nullable = false, name = NebenkostenJahr.MAP_ISTBEZAHLT)
     private boolean istBezahlt;
-   
-    @OneToMany(mappedBy = Mietobjekt.MAP_NEBENKOSTENJAHR,
-        cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.REFRESH, CascadeType.DETACH})
-    private List<Mietobjekt> mietobjekte = new ArrayList<>();
+    
+    public static final String MAP_MIETOBJEKT= "mietobjekt";
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+        CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) 
+    @JoinColumn(name="MIETOBJEKT_NEBENKOSTENJAHR")
+    private Mietobjekt mietobjekt;
     
     public NebenkostenJahr() {
     }
@@ -114,18 +117,12 @@ public class NebenkostenJahr extends BaseEntity{
        istBezahlt = aIstBezahlt;
     }
     
-    public List<Mietobjekt> getMietobjekte() {
-        return mietobjekte;
+    public Mietobjekt getMietobjekt() {
+        return mietobjekt;
     }
 
-    public void setMietobjekte(List<Mietobjekt> mietobjekte) {
-        this.mietobjekte = mietobjekte;
+    public void setMietobjekt(Mietobjekt mietobjekt) {
+        this.mietobjekt = mietobjekt;
     }
-    
-    public void addMietobjekt(Mietobjekt aMietobjekt) {
-        mietobjekte.add(aMietobjekt);
-        aMietobjekt.setNebenkostenjahr(this);
-    }
-    
   
 }

@@ -20,6 +20,9 @@ import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 
 @Entity
@@ -54,8 +57,10 @@ public class Ansprechpartner extends BaseEntity{
     
     
     @OneToMany(mappedBy = Mietobjekt.MAP_ANSPRECHPARTNER,
+        fetch=FetchType.EAGER,
         cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    private List<Mietobjekt> mietobjekte = new ArrayList<>();
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Mietobjekt> mietobjekte;
     
     public Ansprechpartner() {
     }

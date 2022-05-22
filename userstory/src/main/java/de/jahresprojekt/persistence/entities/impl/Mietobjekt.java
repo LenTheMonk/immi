@@ -21,8 +21,11 @@ import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = Mietobjekt.TABLE_NAME)
@@ -97,18 +100,20 @@ public class Mietobjekt extends BaseEntity {
     @JoinColumn(name="ANSPRECHPARTNER_MIETOBJEKT")
     private Ansprechpartner ansprechpartner;
     
-    //TODO: SOLLEN ZAHLUNGEN MIT MIETOBJEKTEN GELÖSCHT WERDEN? DERZEIT: JA
-    public static final String MAP_NEBENKOSTENJAHR= "nebenkostenjahr";
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
-        CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) 
-    @JoinColumn(name="NEBENKOSTENJAHR_MIETOBJEKT")
-    private NebenkostenJahr nebenkostenjahr;
+    @OneToMany(mappedBy = NebenkostenJahr.MAP_MIETOBJEKT,
+        fetch=FetchType.EAGER,
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.REFRESH, CascadeType.DETACH})
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<NebenkostenJahr> nebenkostenjahr;
     
-    public static final String MAP_ZAHLUNG = "zahlung";
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
-        CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name="ZAHLUNG_MIETOBJEKT")
-    private Zahlung zahlung;
+    @OneToMany(mappedBy = Zahlung.MAP_MIETOBJEKT,
+        fetch=FetchType.EAGER,
+        cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.REFRESH, CascadeType.DETACH})
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Zahlung> zahlungen;
+    
     
     public Mietobjekt() {
     }
@@ -259,19 +264,19 @@ public class Mietobjekt extends BaseEntity {
         ansprechpartner = aAnsprechpartner;
     }
     
-    public NebenkostenJahr getNebenkostenjahr() {
+    public List<NebenkostenJahr> getNebenkostenjahr() {
         return nebenkostenjahr;
     }
     
-    public void setNebenkostenjahr(NebenkostenJahr aNebenkostenjahr) {
+    public void setNebenkostenjahr(List<NebenkostenJahr> aNebenkostenjahr) {
     	nebenkostenjahr = aNebenkostenjahr;
     }
     
-    public Zahlung getZahlung() {
-        return zahlung;
+    public List<Zahlung> getZahlungen() {
+        return zahlungen;
     }
     
-    public void setZahlung(Zahlung aZahlung) {
-    	zahlung = aZahlung;
+    public void setZahlungen(List<Zahlung> aZahlung) {
+    	zahlungen = aZahlung;
     }
 }
