@@ -24,6 +24,7 @@ import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -80,6 +81,9 @@ public class Mietobjekt extends BaseEntity {
     public static final String MAP_MIETENDE = "mietende";
     @Column(nullable = true, name = Mietobjekt.MAP_MIETENDE)
     private Timestamp mietende;
+    
+    @Transient
+    private List<Mieter> transientMieterListe;
     
     public static final String MAP_MIETER = "mieter";
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
@@ -279,4 +283,17 @@ public class Mietobjekt extends BaseEntity {
     public void setZahlungen(List<Zahlung> aZahlung) {
     	zahlungen = aZahlung;
     }
+
+    public List<Mieter> getTransientMieterListe() {
+        return transientMieterListe;
+    }
+
+    public void setTransientMieterListe(List<Mieter> transientMieterListe) {
+        this.transientMieterListe = transientMieterListe;
+        
+        if (transientMieterListe != null && transientMieterListe.size() > 0) {
+            this.setMieter(this.transientMieterListe.get(0));
+        }
+    }
+    
 }

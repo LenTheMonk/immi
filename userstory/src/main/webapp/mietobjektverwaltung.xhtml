@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!-- package de.deuka.eckert.userstory.immi; -->
+<!-- package de.deuka.eckert.userstory.immi.view; -->
+<!-- import de.deuka.eckert.userstory.immi.view.ProductService;
+import de.deuka.eckert.userstory.immi.view.SortView; -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <link rel="stylesheet" media="all" type="text/css" href="css/mietobjektverwaltung.css" />
+        <title>Mietobjektverwaltung</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>   
+    </h:head>
+    <body>
+        <header>
+            <a href="/index.xhtml">
+                <div class="logo"></div>
+            </a>
+        </header>
+        
+        <main>
+            
+            <div class="test">
+                <p>hahdahdawdawdad</p>
+                <p>hahahaha</p>
+            </div>
+            <h:form id="tolleForm">
+                <div class="card">
+                    <h5>Mietobjekte</h5>
+                    <p:dataTable id="productsTable" var="product" value="#{dtSortView.products1}"
+                                 editable="true" allowUnsorting="true" sortMode="single" >
+                        
+                        <p:ajax event="rowEdit" listener="#{dtSortView.onRowEdit}"/>
+                        <p:ajax event="rowEditCancel" listener="#{dtSortView.onRowCancel}"/>
+
+                        <p:column sortBy="#{product.code}" headerText="Code">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{product.code}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{product.code}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column sortBy="#{product.name}" headerText="Name" sortOrder="asc">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{product.name}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{product.name}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column sortBy="#{product.category}" headerText="Category">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{product.category}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{product.category}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column sortBy="#{product.quantity}" headerText="Quantity">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{product.quantity}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{product.quantity}" style="width:100%"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        
+                        <p:column style="width:6rem">
+                            <p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </h:form>
+        </main>
+        
+        <footer>
+            
+        </footer>
+    </body>
+</html>

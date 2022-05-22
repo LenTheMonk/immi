@@ -16,14 +16,9 @@ import de.jahresprojekt.persistence.repositories.impl.MietobjektRepository;
  */
 public class MietobjektverwaltungLogikService extends
         BaseLogikService<Mietobjekt, MietobjektRepository> {
-
-    private MieterRepository mieterRepository;
     
     public MietobjektverwaltungLogikService() {
         this.setRepository(RepositoryFactory.getMietobjektRepositorySingleton());
-        this.mieterRepository = RepositoryFactory.getMieterRepositorySingleton();
     }
-    
-    
     
 }

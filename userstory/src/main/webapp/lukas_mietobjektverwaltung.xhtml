@@ -29,13 +29,15 @@ and open the template in the editor.
                 <div class="card">
                     <h5>Mietobjekte</h5>
                     <p:remoteCommand name="remoteUpdateMietObjTable" update="mietObjTabelle" />
+                    <p:remoteCommand name="remoteUpdateMieterZeug" update="mietObjTabelle:mieterCol" />
                     
                     <p:dataTable id="mietObjTabelle" var="objekt" value="#{mietobjektTabelleView.fullList}"
                                  editable="true" allowUnsorting="true" sortMode="single" widgetVar="mietObjDt" 
-                                 scrollHeight="500" scrollWidth="1000" scrollable="true">
+                                 scrollHeight="500" scrollWidth="1000" scrollable="true" >
                         
                         <p:ajax event="rowEdit" listener="#{mietobjektTabelleView.onRowEdit}" oncomplete="remoteUpdateMietObjTable();"/>
                         <p:ajax event="rowEditCancel" listener="#{mietobjektTabelleView.onRowCancel}"/>
+                        <p:ajax event="rowSelect" oncomplete="remoteUpdateMietObjTable();"/>
 
                         <p:column sortBy="#{objekt.id}" headerText="ID" width="100">
                             <h:outputText value="#{objekt.id}"/>
@@ -63,21 +65,38 @@ and open the template in the editor.
                             </p:cellEditor>
                         </p:column>
                         
-                        <!--
-                        <p:column sortBy="#{objekt.istGewerblich}" headerText="Gewerbe" width="80">
-                            <p:cellEditor>
+                        
+                        <p:column id="mieterCol" headerText="Mieter" width="300" sortable="false">
+                            <p:cellEditor id="editorMieterCol">
                                 <f:facet name="output">
-                                    <p:selectBooleanCheckbox value="#{objekt.istGewerblich}" disabled="true"/>
+                                    <h:outputText value="#{objekt.mieter.name}"/>
                                 </f:facet>
-                                <f:facet name="input">
-                                    <p:selectBooleanCheckbox value="#{objekt.istGewerblich}" />
+                                <f:facet name="input" id="facetMieterCol">
+                                    <p:selectManyMenu id="mieterSubSelect" value="#{objekt.transientMieterListe}"
+                                                      converter="#{mietobjektMieterSelectView}" var="mS" filter="true"
+                                                      filterMatchMode="contains" showCheckbox="true" styleClass="manymenu-advanced"
+                                                      style="height: 400px;" onchange="remoteUpdateMieterZeug();">
+                                        <f:selectItems id="mieterSelectItems" value="#{mietobjektMieterSelectView.filteredListReady}" var="m" itemLabel="#{m.name}"
+                                                       itemDescription="#{m.name}" itemValue="#{m}">
+                                        </f:selectItems>
+                                        
+                                        <!--
+                                            An diesem Punkt haben wir ein Problem. Die Mieter sind ermittelt,
+                                            werden aber nicht wie erwartet ueber die Column per Name dargestellt.
+                                            Ohne Hilfe ein unloesbares Problem.
+                                        -->
+                                        <p:column>
+                                            <h:outputText id="mieterNameDisplay" value="#{m}" />
+                                        </p:column>
+                                        
+                                        <f:validator validatorId="mietobjektMieterSelectView"/>
+                                    </p:selectManyMenu>
                                 </f:facet>
                             </p:cellEditor>
                         </p:column>
-                        -->
                         
                         <p:column width="60">
-                            <p:rowEditor editTitle="Bearbeiten" cancelTitle="Abbrechen" saveTitle="Speichern"/>
+                            <p:rowEditor editTitle="Bearbeiten" cancelTitle="Abbrechen" saveTitle="Speichern" />
                         </p:column>
                         
                         <p:column width="30">

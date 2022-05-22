@@ -19,11 +19,13 @@ de\jahresprojekt\logic\view\IEditView.class
 de\jahresprojekt\logic\service\alexUndGeorge\MessagesView.class
 de\jahresprojekt\tutorial\view\ProductService.class
 de\jahresprojekt\persistence\test\SteuerungTest.class
+de\jahresprojekt\logic\view\impl\BaseSelectOneView.class
 de\jahresprojekt\logic\util\TimestampUtils.class
 de\jahresprojekt\persistence\repositories\impl\AnsprechpartnerRepository.class
 de\jahresprojekt\logic\util\HashUtils.class
 de\jahresprojekt\persistence\entities\impl\Zahlung.class
 de\jahresprojekt\logic\service\alexUndGeorge\MieterSrv.class
+de\jahresprojekt\logic\view\impl\MietobjektverwaltungSelectOneView.class
 de\jahresprojekt\logic\view\ISortierView.class
 de\jahresprojekt\tutorial\view\InventoryStatus.class
 de\jahresprojekt\persistence\repositories\impl\OrtRepository.class
@@ -53,7 +55,10 @@ de\jahresprojekt\logic\service\alexUndGeorge\Login.class
 de\jahresprojekt\persistence\entities\impl\Ansprechpartner.class
 de\jahresprojekt\persistence\entities\impl\Ort.class
 de\jahresprojekt\logic\service\impl\LoginService.class
+de\jahresprojekt\logic\view\impl\MietobjektverwaltungSelectOneView$MieterPredicate.class
 de\jahresprojekt\persistence\entities\impl\Mietkomplex.class
 de\jahresprojekt\persistence\repositories\impl\MieterRepository.class
 de\jahresprojekt\persistence\repositories\impl\MietkomplexRepository.class
 de\jahresprojekt\logic\service\impl\MietobjektverwaltungLogikService.class
+de\jahresprojekt\logic\converter\MieterConverter.class
+de\jahresprojekt\logic\view\ISelectOneView.class

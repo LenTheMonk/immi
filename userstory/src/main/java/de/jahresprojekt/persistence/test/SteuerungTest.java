@@ -20,7 +20,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.primefaces.component.celleditor.CellEditor;
 import org.primefaces.component.datatable.DataTable;
+import org.primefaces.component.roweditor.RowEditor;
+import org.primefaces.component.selectmanymenu.SelectManyMenu;
 
 /**
  * Testklasse
@@ -34,7 +37,7 @@ public class SteuerungTest {
      */
     public static void main(String[] args) {
         
-        MieterRepository mr = new MieterRepository();
+//        MieterRepository mr = new MieterRepository();
 
 //        NutzerRepository rep = new NutzerRepository();
 //        
@@ -59,9 +62,17 @@ public class SteuerungTest {
 //                new Timestamp(2022, 4, 23, 0, 0, 0, 0),
 //                new Timestamp(2023, 1, 1, 0, 0, 0, 0)));
 
-//        DataTable ds = new DataTable();
-//        for (String d : ds.getEventNames()) {
+
+        RowEditor men = new RowEditor();
+//        System.out.println("Roweditor Events");
+//        for (String d : men.getEventNames()) {
 //            System.out.println(d);
 //        }
+        
+        CellEditor ds = new CellEditor();
+        System.out.println("Celleditor Events");
+        for (String d : ds.getEventNames()) {
+            System.out.println(d);
+        }
     }
 }

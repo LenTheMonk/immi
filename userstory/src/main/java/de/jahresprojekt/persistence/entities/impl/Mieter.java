@@ -154,6 +154,7 @@ public class Mieter extends BaseEntity{
     }
     
     public String getName() {
+        System.out.println("Getter aufgerufen: " + name);
         return name;
     }
     
