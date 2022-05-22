@@ -7,6 +7,7 @@ package de.jahresprojekt.logic.service.impl;
 
 import de.jahresprojekt.persistence.repositories.impl.OrtRepository;
 import de.jahresprojekt.persistence.entities.impl.Ort;
+import de.jahresprojekt.persistence.repositories.controlling.RepositoryFactory;
 
 /**
  *
@@ -15,7 +16,7 @@ import de.jahresprojekt.persistence.entities.impl.Ort;
 public class OrtLogikService extends BaseLogikService<Ort, OrtRepository> {
 
     public OrtLogikService() {
-        this.setRepository(new OrtRepository());
+        this.setRepository(RepositoryFactory.getOrtRepositorySingleton());
     }
     
 }

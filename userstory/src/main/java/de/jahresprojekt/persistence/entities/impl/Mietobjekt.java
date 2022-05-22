@@ -113,29 +113,11 @@ public class Mietobjekt extends BaseEntity {
     public Mietobjekt() {
     }
     
-    public Mietobjekt(String aBezeichnung, String aStrasse, String aPlz,
+    public Mietobjekt(String aBeschreibung, String aStrasse, String aPlz,
     	    String aOrt, Integer aQm, Double aQmpreiskalt, Double aNebenkosten,
             boolean aIstGewerblich, boolean aIstVermietet, 
     	    Timestamp aMietbeginn, Timestamp aMietende ) {
-                beschreibung = aBezeichnung;
-        strasse = aStrasse;
-        plz = aPlz;
-        ort = aOrt;
-        qm = aQm;
-        qmpreiskalt = aQmpreiskalt;
-        nebenkosten = aNebenkosten;
-        istGewerblich = aIstGewerblich;
-        istVermietet = aIstVermietet;
-        mietbeginn = aMietbeginn;
-        mietende = aMietende;
-    }
-    
-    public Mietobjekt(Integer aId, String aBezeichnung, String aStrasse, String aPlz,
-    	    String aOrt, Integer aQm, Double aQmpreiskalt, Double aNebenkosten,
-            boolean aIstGewerblich, boolean aIstVermietet, 
-    	    Timestamp aMietbeginn, Timestamp aMietende ) {
-        id = aId;
-        beschreibung = aBezeichnung;
+                beschreibung = aBeschreibung;
         strasse = aStrasse;
         plz = aPlz;
         ort = aOrt;

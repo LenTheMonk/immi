@@ -33,6 +33,7 @@ de\jahresprojekt\logic\service\alexUndGeorge\immobilienManager.class
 de\jahresprojekt\logic\service\alexUndGeorge\ZahlungSrv.class
 de\jahresprojekt\logic\view\IAddView.class
 de\jahresprojekt\persistence\entities\IEntity.class
+de\jahresprojekt\persistence\repositories\controlling\RepositoryFactory.class
 de\jahresprojekt\logic\view\impl\BaseSortierView.class
 de\jahresprojekt\logic\service\ILogikService.class
 de\jahresprojekt\persistence\entities\impl\Mieter.class
